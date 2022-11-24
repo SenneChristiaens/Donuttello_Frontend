@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "sass": "^1.56.1",
+    "three": "^0.146.0",
     "vue": "^3.2.41"
   },
   "devDependencies": {
