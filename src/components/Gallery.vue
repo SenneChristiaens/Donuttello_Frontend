@@ -21,7 +21,7 @@ onMounted(() => {
 
 <template>
   <Navigation />
-  <h1>Gallery</h1>
+  <h1>Gallerij</h1>
 
   <div class="gallery">
     <div class="gallery__item" v-for="donut in donuts.donuts">
