@@ -1,0 +1,22 @@
+@use '../colors';
+
+.nav{
+    background-color: colors.$pink;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    li {
+        list-style: none;
+        a {
+            text-decoration: none;
+            color: colors.$white;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    }
+    image {
+        width: 2rem;
+    }
+}
