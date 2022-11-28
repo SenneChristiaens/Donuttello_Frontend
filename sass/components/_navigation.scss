@@ -11,11 +11,14 @@
             flex-direction: column;
             text-decoration: none;
             color: colors.$white;
-            font-size: 0.75rem;
+            font-size: 1rem;
             text-transform: uppercase;
             font-weight: bold;
         }
     image {
         width: 2rem;
+    }
+    img {
+        width: 8rem;
     }
 }
