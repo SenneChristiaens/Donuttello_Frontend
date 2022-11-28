@@ -1,24 +1,21 @@
-@use '../colors';
+@use "../colors";
 
 .nav {
-    background-color: colors.$pink;
+  background-color: colors.$pink;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  a {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-        a {
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: colors.$white;
-            font-size: 1rem;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-    image {
-        width: 2rem;
-    }
-    img {
-        width: 8rem;
-    }
+    flex-direction: column;
+    text-decoration: none;
+    color: colors.$white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  img {
+    width: 8rem;
+  }
 }
