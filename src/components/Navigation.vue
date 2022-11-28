@@ -3,12 +3,13 @@
 <template>
   <nav class="nav">
     <img class="nav__image" src="/src/assets/logo.png" alt="logo" />
-    <ul class="nav__ul">
-      <li><a class="nav__li" href="/">Home</a></li>
-      <li><a class="nav__li" href="/about">Configurator</a></li>
-      <li><a class="nav__li" href="/contact">Gallerij</a></li>
-    </ul>
+    <div class="nav__links">
+      <router-link to="/"><a class="nav__item">Home</a></router-link>
+      <router-link to="/configurator"><a class="nav__item">Configurator</a></router-link>
+      <router-link to="/gallery"><a class="nav__item">Gallerij</a></router-link>
+    </div>
   </nav>
+  
 </template>
 
 <style></style>

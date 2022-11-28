@@ -1,8 +1,8 @@
 <script setup>
 import { reactive, onMounted } from "vue";
 import moment from "moment";
-import Footer from "./Footer.vue";
-import Navigation from "./Navigation.vue";
+import Footer from "../components/Footer.vue";
+import Navigation from "../components/Navigation.vue";
 
 let donuts = reactive({ donuts: [] });
 

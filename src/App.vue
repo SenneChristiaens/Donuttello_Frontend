@@ -1,11 +1,9 @@
 <script setup>
-import Gallery from './components/Gallery.vue';
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
-    <div id="app">
-        <Gallery />
-    </div>
+<RouterView />
 </template>
 
 <style></style>
