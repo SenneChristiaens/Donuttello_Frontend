@@ -31,3 +31,16 @@
     text-align: right;
   }
 }
+
+@media screen and (min-width: 905px) {
+  .footer {
+    padding: 2rem 3rem 2rem 3rem;
+    align-items: start;
+    }
+}
+
+@media screen and (min-width: 905px) {
+  .footer {
+    padding: 2rem 8rem 2rem 8rem;
+    }
+}
