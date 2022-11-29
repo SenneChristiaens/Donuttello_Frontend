@@ -1,62 +1,67 @@
-@use 'colors';
+@use "colors";
 
-.hero{
-    background: linear-gradient(rgba(231, 44, 112, 0.5), rgba(130, 209, 228, 0.645)), url('../src/assets/donuts-hero.jpg') repeat scroll center center / cover;    padding: 2rem;
-    h1{
-        color: colors.$white;
-        font-size: 3rem;
-        text-transform: uppercase;
-        text-align: center;
-        padding: 4rem 0 1rem 0;
-    }
-    p{
-        color: colors.$white;
-        font-size: 1rem;
-        text-align: center;
-    }
-    a {
-        text-decoration: none;
-    }
-    button{
-        background-color: colors.$yellow;
-        border-radius: 3rem;
-        color: colors.$pink;
-        border: none;
-        padding: 1rem 2rem;
-        font-size: 1rem;
-        text-transform: uppercase;
-        margin: 2rem auto;
-        display: block;
-        font-family: 'Dosis', sans-serif;
-        font-weight: bold;
-    }
+.hero {
+  background: linear-gradient(
+      rgba(231, 44, 112, 0.5),
+      rgba(130, 209, 228, 0.645)
+    ),
+    url("../src/assets/donuts-hero.jpg") repeat scroll center center / cover;
+  padding: 2rem;
+  h1 {
+    color: colors.$white;
+    font-size: 3rem;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 4rem 0 1rem 0;
+  }
+  p {
+    color: colors.$white;
+    font-size: 1rem;
+    text-align: center;
+  }
+  a {
+    text-decoration: none;
+  }
+  button {
+    background-color: colors.$yellow;
+    border-radius: 3rem;
+    color: colors.$pink;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin: 2rem auto;
+    display: block;
+    font-family: "Dosis", sans-serif;
+    font-weight: bold;
+  }
 }
 
-.info{
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    align-items: flex-start;
-    h2{
-        padding: 3rem 0 1rem 0;
-    }
-    img{
-        width: 20rem;
-        padding-top: 1rem;
-    }
-    p{
-        padding-bottom: 1rem;
-    }
-    button{
-        background-color: colors.$pink;
-        border-radius: 3rem;
-        color: colors.$yellow;
-        border: none;
-        padding: 1rem 2rem;
-        font-size: 1rem;
-        text-transform: uppercase;
-        margin: 1rem 0 1rem 0;
-        font-family: 'Dosis', sans-serif;
-        font-weight: bold;
-    }
+.info {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  align-items: flex-start;
+  h2 {
+    padding: 3rem 0 1rem 0;
+  }
+  img {
+    width: 20rem;
+    padding-top: 1rem;
+  }
+  p {
+    padding-bottom: 1rem;
+  }
+  button {
+    background-color: colors.$pink;
+    border-radius: 3rem;
+    color: colors.$yellow;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin: 1rem 0 1rem 0;
+    font-family: "Dosis", sans-serif;
+    font-weight: bold;
+  }
 }
