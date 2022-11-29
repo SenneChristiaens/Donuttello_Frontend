@@ -1,0 +1,107 @@
+@use "./colors";
+
+.configurator__main {
+  margin: 2rem;
+}
+
+.configurator__donut {
+  padding-top: 20rem;
+  padding-bottom: 20rem;
+  background-color: colors.$pink;
+  h1 {
+    color: colors.$white;
+    font-size: 3rem;
+    text-transform: uppercase;
+    text-align: center;
+  }
+}
+
+.configurator__form {
+  margin-top: 1rem;
+  position: relative;
+  height: 3.25rem;
+  width: 100%;
+  color: colors.$black;
+  overflow: hidden;
+}
+
+.configurator__form input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  color: colors.$black;
+  font-size: 1.2rem;
+  line-height: 3.25rem;
+  outline: 0;
+  background-color: inherit;
+  padding-top: 1.2rem;
+  border: none;
+  box-sizing: border-box;
+}
+
+.configurator__form .configurator__label--wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  background-color: inherit;
+  left: 0;
+  pointer-events: none;
+  border-bottom: 1px solid colors.$pink;
+}
+
+.configurator__form .configurator__label--wrapper::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: -1px;
+  left: 0;
+  background-color: inherit;
+  border-bottom: 3px solid colors.$pink;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+}
+
+.configurator__form .configurator__text {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  transition: all 0.2s ease;
+}
+
+.configurator__form
+  input:focus
+  + .configurator__label--wrapper
+  .configurator__text,
+.configurator__form
+  input:valid
+  + .configurator__label--wrapper
+  .configurator__text {
+  font-size: 0.9rem;
+  transform: translateY(-150%);
+  color: colors.$pink;
+}
+
+.configurator__form input:focus + .configurator__label--wrapper::after,
+.configurator__form input:valid + .configurator__label--wrapper::after {
+  transform: translateX(0);
+}
+
+.configurator__button {
+  text-align: center;
+
+  button {
+    background-color: colors.$yellow;
+    border-radius: 3rem;
+    color: colors.$pink;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin: 2rem auto;
+    display: inline-block;
+    font-family: "Dosis", sans-serif;
+    font-weight: bold;
+  }
+}
