@@ -9,7 +9,6 @@
       <router-link to="/gallery"><a class="nav__item">Gallerij</a></router-link>
     </div>
   </nav>
-  
 </template>
 
 <style></style>

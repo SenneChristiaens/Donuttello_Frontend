@@ -9,7 +9,7 @@ import Footer from "../components/Footer.vue";
     <div class="hero">
       <h1 class="hero__h1">Configureer je eigen donut</h1>
       <p class="hero__p">Bestel nu online je self-made donut!</p>
-      <button class="hero__btn">Nu configureren</button>
+      <router-link to="/configurator"><button class="hero__btn">Nu configureren</button></router-link>
     </div>
     <div class="info">
       <img
@@ -23,7 +23,7 @@ import Footer from "../components/Footer.vue";
         probleem, bekijk onze gallerij met donuts van bedrijven die al een
         bestelling hebben gemaakt.
       </p>
-      <button class="info__btn">Gallerij</button>
+      <router-link to="/gallery"><button class="info__btn">Gallerij</button></router-link>
     </div>
   </main>
   <Footer />
