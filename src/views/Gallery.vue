@@ -26,7 +26,7 @@ onMounted(() => {
   <div class="gallery">
     <div class="gallery__item" v-for="donut in donuts.donuts">
       <h2 class="gallery__title">{{ donut.name }}</h2>
-      <p class="gallery__date">{{ donut.date }}</p>
+      <p class="gallery__date">Gemaakt op {{ donut.date }}</p>
       <p class="gallery__votes">Votes: {{ donut.votes }}</p>
     </div>
   </div>

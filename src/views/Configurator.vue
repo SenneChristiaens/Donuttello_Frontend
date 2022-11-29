@@ -4,11 +4,9 @@ import Navigation from "../components/Navigation.vue";
 </script>
 
 <template>
-    <Navigation />
-    <h1>Configurator</h1>
-    <Footer />
+  <Navigation />
+  <h1>Configurator</h1>
+  <Footer />
 </template>
 
-<style>
-
-</style>
+<style></style>
