@@ -18,6 +18,10 @@ const router = createRouter({
       name: "Gallery",
       component: () => import("../views/Gallery.vue"),
     },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: "/",
+    },
   ],
 });
 
