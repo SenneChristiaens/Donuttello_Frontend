@@ -1,11 +1,11 @@
 @use "./colors";
 
 .gallery {
-    margin: 1.5rem;
+    margin: 3rem;
   }
 
   .gallery__item {
-    margin: 1.5rem;
+    margin-bottom: 3rem;
     display: block;
     max-width: 100%;
     padding: 2.5rem 5rem 2.5rem 5rem;
@@ -13,12 +13,12 @@
   }
   
   #sorting {
+    margin-top: 1.5rem;
     font-size: 1rem;
     font-weight: bold;
     border: none;
     border-bottom: 3px solid colors.$pink;
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
+    margin-left: 3rem;
   }
   
   .gallery__h1 {
