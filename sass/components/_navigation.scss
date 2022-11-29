@@ -19,3 +19,28 @@
     width: 8rem;
   }
 }
+
+@media screen and (min-width: 905px) {
+  .nav{
+    padding: 1rem 3rem 1rem 3rem;
+    .nav__links {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .nav {
+    padding: 1rem 8rem 1rem 8rem;
+    .nav__links {
+      display: flex;
+      flex-direction: row;
+      gap: 3rem;
+    }
+    a {
+      font-size: 1.1rem;
+    }
+  }
+}
