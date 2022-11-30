@@ -31,10 +31,14 @@ function sorting() {
       donuts.donuts.sort((a, b) => (b.votes < a.votes ? 1 : -1));
       break;
     case "date-new-to-old":
-      donuts.donuts.sort((a, b) => new Date(b.date) > new Date(a.date) ? 1 : -1 );
+      donuts.donuts.sort((a, b) =>
+        new Date(b.date) > new Date(a.date) ? 1 : -1
+      );
       break;
     case "date-old-to-new":
-      donuts.donuts.sort((a, b) => new Date(b.date) < new Date(a.date) ? 1 : -1 );
+      donuts.donuts.sort((a, b) =>
+        new Date(b.date) < new Date(a.date) ? 1 : -1
+      );
       break;
   }
 }
@@ -43,7 +47,7 @@ function sorting() {
 <template>
   <Navigation />
   <h1 class="gallery__h1">
-    Ontdek onze <span class="text--pink">Gallerij</span>
+    Status van de <span class="text--pink">Bestellingen</span>
   </h1>
 
   <select name="sorting" id="sorting" v-on:change="sorting" v-model="filter">
