@@ -1,4 +1,10 @@
-<script setup></script>
+<script setup>
+import { computed } from "vue";
+
+const isAdmin = computed(() => {
+  return localStorage.getItem("token") !== null;
+});
+</script>
 
 <template>
   <footer class="footer">
@@ -6,7 +12,7 @@
     <router-link to="/"><a class="nav__item">Home</a></router-link>
     <router-link to="/configurator"><a class="nav__item">Configurator</a></router-link>
     <router-link to="/gallery"><a class="nav__item">Gallerij</a></router-link>
-    <router-link to="/admin"><a class="nav__item">Admin</a></router-link>
+    <router-link to="/admin" v-if="isAdmin"><a class="nav__item">Admin</a></router-link>
     <p class="footer__p">© 2022 reserved by Best Donuts gcv</p>
   </footer>
 </template>
