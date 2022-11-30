@@ -36,9 +36,9 @@ import Navigation from "../components/Navigation.vue";
         <span class="configurator__text">Email</span>
       </label>
     </div>
-    <form class="configurator__button" action="" method="post">
+    <div class="configurator__button">
       <button class="hero__btn">Verstuur je donut!</button>
-    </form>
+    </div>
   </main>
   <Footerello />
 </template>
