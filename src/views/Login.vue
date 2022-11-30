@@ -13,8 +13,8 @@ function login() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      "email": email.value,
-      "password": password.value,
+      email: email.value,
+      password: password.value,
     }),
   })
     .then((response) => response.json())
@@ -28,6 +28,10 @@ function login() {
       }
     });
 }
+
+if (localStorage.getItem("token")) {
+  window.location.href = "/admin";
+}
 </script>
 
 <template>
@@ -37,7 +41,13 @@ function login() {
       <h1 class="login__h1">Login</h1>
       <form @submit.prevent="login">
         <div class="login__form">
-          <input type="email" name="email" autocomplete="on" v-model="email" required />
+          <input
+            type="email"
+            name="email"
+            autocomplete="on"
+            v-model="email"
+            required
+          />
           <label for="email" class="login__label--wrapper">
             <span class="login__text">Email</span>
           </label>
