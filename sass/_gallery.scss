@@ -31,3 +31,21 @@
   .text--pink {
     color: colors.$pink;
   }
+
+  @media screen and (min-width: 905px) {
+    .gallery {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-gap: 3rem;
+    }
+
+    .gallery__item {
+      margin-bottom: 0;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    .gallery {
+      grid-template-columns: auto auto auto;
+    }
+  }
