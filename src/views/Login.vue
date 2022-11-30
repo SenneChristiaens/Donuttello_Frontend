@@ -57,7 +57,7 @@ function login() {
 </template>
 
 <style scoped>
-.login__box {
+/* .login__box {
   margin: 3rem;
   padding: 3rem;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
@@ -174,5 +174,5 @@ function login() {
     margin-left: 35rem;
     margin-right: 35rem;
   }
-}
+} */
 </style>
