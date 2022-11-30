@@ -1,7 +1,7 @@
 <script setup>
 import { reactive, onMounted, ref } from "vue";
 import moment from "moment";
-import Footer from "../components/Footer.vue";
+import Footerello from "../components/Footerello.vue";
 import Navigation from "../components/Navigation.vue";
 
 let filter = ref("date-new-to-old");
@@ -62,7 +62,7 @@ function sorting() {
       <p class="gallery__votes">Votes: {{ donut.votes }}</p>
     </div>
   </div>
-  <Footer />
+  <Footerello />
 </template>
 
 <style></style>

@@ -1,5 +1,5 @@
 <script setup>
-import Footer from "../components/Footer.vue";
+import Footerello from "../components/Footerello.vue";
 import Navigation from "../components/Navigation.vue";
 </script>
 
@@ -40,7 +40,7 @@ import Navigation from "../components/Navigation.vue";
       <button class="hero__btn">Verstuur je donut!</button>
     </form>
   </main>
-  <Footer />
+  <Footerello />
 </template>
 
 <style>
