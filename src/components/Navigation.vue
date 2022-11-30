@@ -7,6 +7,7 @@
       <router-link to="/"><a class="nav__item">Home</a></router-link>
       <router-link to="/configurator"><a class="nav__item">Configurator</a></router-link>
       <router-link to="/gallery"><a class="nav__item">Gallerij</a></router-link>
+      <router-link to="/admin"><a class="nav__item">Admin</a></router-link>
     </div>
   </nav>
 </template>

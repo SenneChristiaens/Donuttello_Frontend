@@ -18,6 +18,11 @@ const router = createRouter({
       name: "Gallery",
       component: () => import("../views/Gallery.vue"),
     },
+    {
+      path: "/admin",
+      name: "Admin",
+      component: () => import("../views/GalleryAdmin.vue"),
+    },
   ],
 });
 
