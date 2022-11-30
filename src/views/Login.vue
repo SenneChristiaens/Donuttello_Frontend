@@ -5,7 +5,7 @@ import Footerello from "../components/Footerello.vue";
 
 <template>
   <Navigation />
-  <main class="main">
+  <main class="login__box">
   <div class="login">
     <h1 class="login__h1">Login</h1>
     <form>
