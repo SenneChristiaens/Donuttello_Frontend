@@ -11,7 +11,7 @@
   "dependencies": {
     "moment": "^2.29.4",
     "sass": "^1.56.1",
-    "three": "^0.146.0",
+    "three": "^0.147.0",
     "vue": "^3.2.41",
     "vue-router": "^4.1.6"
   },
