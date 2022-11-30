@@ -5,6 +5,7 @@ import { ref } from "vue";
 
 let email = ref("");
 let password = ref("");
+let message = ref(false);
 
 function login() {
   fetch("https://donuttello-backend-5chz.onrender.com/api/v1/admins/login", {
@@ -24,7 +25,8 @@ function login() {
         localStorage.setItem("nickname", data.nickname);
         window.location.href = "/admin";
       } else {
-        alert("Invalid Credentials");
+        console.log("Invalid login credentials");
+        message.value = true;
       }
     });
 }
@@ -59,6 +61,9 @@ if (localStorage.getItem("token")) {
             <span class="login__text">Password</span>
           </label>
         </div>
+        <p class="message message--bad" v-if="message">
+          Gegevens komen niet overeen.
+        </p>
         <button type="submit" class="button--hero">Login</button>
       </form>
     </div>
@@ -67,6 +72,14 @@ if (localStorage.getItem("token")) {
 </template>
 
 <style scoped>
+.message {
+  margin-top: 0.2rem;
+  font-weight: bold;
+}
+
+.message--bad {
+  color: rgb(243, 31, 31);
+}
 /* .login__box {
   margin: 3rem;
   padding: 3rem;
