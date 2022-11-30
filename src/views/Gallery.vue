@@ -24,17 +24,15 @@ onMounted(() => {
 
 function sorting() {
   switch (filter.value) {
-    case "votes-high-to-low":
-      donuts.donuts.sort((a, b) => (b.votes > a.votes ? 1 : -1));
-      break;
-    case "votes-low-to-high":
-      donuts.donuts.sort((a, b) => (b.votes < a.votes ? 1 : -1));
-      break;
     case "date-new-to-old":
-      donuts.donuts.sort((a, b) => new Date(b.date) > new Date(a.date) ? 1 : -1 );
+      donuts.donuts.sort((a, b) =>
+        new Date(b.date) > new Date(a.date) ? 1 : -1
+      );
       break;
     case "date-old-to-new":
-      donuts.donuts.sort((a, b) => new Date(b.date) < new Date(a.date) ? 1 : -1 );
+      donuts.donuts.sort((a, b) =>
+        new Date(b.date) < new Date(a.date) ? 1 : -1
+      );
       break;
   }
 }
@@ -49,8 +47,6 @@ function sorting() {
   <select name="sorting" id="sorting" v-on:change="sorting" v-model="filter">
     <option value="date-new-to-old">Datum nieuw naar oud</option>
     <option value="date-old-to-new">Datum oud naar nieuw</option>
-    <option value="votes-high-to-low">Votes hoog naar laag</option>
-    <option value="votes-low-to-high">Votes laag naar hoog</option>
   </select>
 
   <div class="gallery">
@@ -59,7 +55,6 @@ function sorting() {
       <p class="gallery__date">
         Gemaakt op {{ moment(donut.date).format("DD MMMM YYYY") }}
       </p>
-      <p class="gallery__votes">Votes: {{ donut.votes }}</p>
     </div>
   </div>
   <Footerello />
