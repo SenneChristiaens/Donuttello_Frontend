@@ -5,6 +5,7 @@ import Footerello from "../components/Footerello.vue";
 
 <template>
   <Navigation />
+  <main class="main">
   <div class="login">
     <h1 class="login__h1">Login</h1>
     <form>
@@ -26,6 +27,7 @@ import Footerello from "../components/Footerello.vue";
     </form>
     </form>
   </div>
+</main>
   <Footerello />
 </template>
 
