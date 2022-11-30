@@ -5,8 +5,10 @@ import Footerello from "../components/Footerello.vue";
 import Navigation from "../components/Navigation.vue";
 
 let filter = ref("date-new-to-old");
-
+let nickname = ref("");
 let donuts = reactive({ donuts: [] });
+
+nickname.value = localStorage.getItem("nickname");
 
 onMounted(() => {
   let apiUrl = "https://donuttello-backend-5chz.onrender.com/api/v1/donuts";
@@ -41,7 +43,7 @@ function sorting() {
 <template>
   <Navigation />
   <h1 class="gallery__h1">
-    Status van de <span class="text--pink">Bestellingen</span>
+    👋 Hallo {{ nickname }}, dit is de status van de <span class="text--pink">Bestellingen</span>
   </h1>
 
   <select name="sorting" id="sorting" v-on:change="sorting" v-model="filter">
