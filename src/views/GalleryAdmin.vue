@@ -53,10 +53,14 @@ function sorting() {
 
   <div class="gallery">
     <div class="gallery__item" v-for="donut in donuts.donuts" :key="donut.id">
-      <h2 class="gallery__title">{{ donut.name }}</h2>
-      <p class="gallery__date">
-        Gemaakt op {{ moment(donut.date).format("DD MMMM YYYY") }}
-      </p>
+      <img class="gallery__image" :src="donut.url" alt="donut" />
+      <div class="gallery__info">
+        <h2 class="gallery__company">Voor {{ donut.company }}</h2>
+        <h3 class="gallery__title">{{ donut.name }}</h3>
+        <p class="gallery__date">
+          Gemaakt op {{ moment(donut.date).format("DD MMMM YYYY") }}
+        </p>
+      </div>
     </div>
   </div>
   <Footerello />
