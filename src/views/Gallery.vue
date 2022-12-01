@@ -51,7 +51,7 @@ function sorting() {
 
   <div class="gallery">
     <div class="gallery__item" v-for="donut in donuts.donuts" :key="donut.id">
-      <img :src="donut.url" alt="donut" />
+      <img class="gallery__image" :src="donut.url" alt="donut" />
       <h2 class="gallery__title">{{ donut.name }}</h2>
       <h3 class="gallery__company">Door {{ donut.company }}</h3>
       <p class="gallery__date">
