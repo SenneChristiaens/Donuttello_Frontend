@@ -27,7 +27,7 @@ import Navigation from "../components/Navigation.vue";
     <div class="configurator__form">
       <input type="text" name="name" required />
       <label for="name" class="configurator__label--wrapper">
-        <span class="configurator__text">Naam</span>
+        <span class="configurator__text">Naam Bedrijf</span>
       </label>
     </div>
     <div class="configurator__form">
