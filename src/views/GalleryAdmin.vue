@@ -4,6 +4,18 @@ import moment from "moment";
 import Footerello from "../components/Footerello.vue";
 import Navigation from "../components/Navigation.vue";
 
+/* import the fontawesome core */
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+/* import specific icons */
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+
+/* add icons to the library */
+library.add(faTrashCan);
+
 let filter = ref("date-new-to-old");
 let nickname = ref("");
 let donuts = reactive({ donuts: [] });
@@ -23,7 +35,6 @@ onMounted(() => {
 });
 
 // ascending = oud -> nieuw
-
 function sorting() {
   switch (filter.value) {
     case "date-new-to-old":
@@ -38,12 +49,29 @@ function sorting() {
       break;
   }
 }
+
+function deleteDonut(donutId) {
+  let apiUrl = `https://donuttello-backend-5chz.onrender.com/api/v1/donuts/${donutId}`;
+  console.log(donutId);
+  fetch(apiUrl, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      window.location.href = "/admin";
+    });
+}
 </script>
 
 <template>
   <Navigation />
   <h1 class="gallery__h1">
-    👋 Hallo {{ nickname }}, dit is de status van de <span class="text--pink">Bestellingen</span>
+    👋 Hallo {{ nickname }}, dit is de status van de
+    <span class="text--pink">Bestellingen</span>
   </h1>
 
   <select name="sorting" id="sorting" v-on:change="sorting" v-model="filter">
@@ -55,6 +83,11 @@ function sorting() {
     <div class="gallery__item" v-for="donut in donuts.donuts" :key="donut.id">
       <img class="gallery__image" :src="donut.url" alt="donut" />
       <div class="gallery__info">
+        <FontAwesomeIcon
+          class="icon"
+          icon="trash-can"
+          v-on:click.prevent="deleteDonut(donut._id)"
+        />
         <h2 class="gallery__company">Voor {{ donut.company }}</h2>
         <h3 class="gallery__title">{{ donut.name }}</h3>
         <p class="gallery__date">
@@ -66,4 +99,9 @@ function sorting() {
   <Footerello />
 </template>
 
-<style></style>
+<style>
+.icon {
+  padding-top: 2.5px;
+  color: #82d1e4;
+}
+</style>
