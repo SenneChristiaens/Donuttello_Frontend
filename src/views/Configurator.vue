@@ -1,6 +1,7 @@
 <script setup>
 import Footerello from "../components/Footerello.vue";
 import Navigation from "../components/Navigation.vue";
+import Three from "../components/Three.vue";
 </script>
 
 <template>
@@ -22,7 +23,7 @@ import Navigation from "../components/Navigation.vue";
     </div> -->
 
     <div class="configurator__donut">
-      <h1>Configurator</h1>
+      <Three />
     </div>
     <div class="configurator__form">
       <input type="text" name="name" required />
