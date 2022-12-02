@@ -112,8 +112,10 @@ function deleteDonut(donutId) {
           Gemaakt op {{ moment(donut.date).format("DD MMMM YYYY") }}
         </p>
         <p class="gallery__status">Status: {{ donut.status }}</p>
-        <button v-on:click="changeStatus(donut._id, 'Bestelling wordt klaargemaakt')">Bestelling wordt klaargemaakt</button>
-        <button v-on:click="changeStatus(donut._id, 'Bestelling is klaar')">Bestelling is klaar</button>
+        <div class="button--status">
+        <button class="button--hero" v-on:click="changeStatus(donut._id, 'Bestelling wordt klaargemaakt')">Bestelling wordt klaargemaakt</button>
+        <button class="button--hero" v-on:click="changeStatus(donut._id, 'Bestelling is klaar')">Bestelling is klaar</button>
+      </div>
       </div>
     </div>
   </div>
@@ -121,6 +123,12 @@ function deleteDonut(donutId) {
 </template>
 
 <style>
+.button--status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .icon {
   padding-top: 2.5px;
   color: #82d1e4;
