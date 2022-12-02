@@ -50,6 +50,39 @@ function sorting() {
   }
 }
 
+function changeToProduction(id) {
+  let apiUrl = `https://donuttello-backend-5chz.onrender.com/api/v1/donuts/${id}`;
+  fetch(apiUrl, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      status: "Bestelling wordt klaargemaakt",
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    });
+}
+function changeToFinished(id) {
+  let apiUrl = `https://donuttello-backend-5chz.onrender.com/api/v1/donuts/${id}`;
+  fetch(apiUrl, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      status: "Bestelling is klaar",
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    });
+}
+
 function deleteDonut(donutId) {
   let apiUrl = `https://donuttello-backend-5chz.onrender.com/api/v1/donuts/${donutId}`;
   console.log(donutId);
@@ -65,6 +98,7 @@ function deleteDonut(donutId) {
       window.location.href = "/admin";
     });
 }
+
 </script>
 
 <template>
@@ -93,6 +127,12 @@ function deleteDonut(donutId) {
         <p class="gallery__date">
           Gemaakt op {{ moment(donut.date).format("DD MMMM YYYY") }}
         </p>
+        <button v-on:click="changeToProduction(donut._id)">
+          Bestelling wordt klaargemaakt
+        </button>
+        <button v-on:click="changeToFinished(donut._id)">
+          Bestelling is klaar
+        </button>
       </div>
     </div>
   </div>
