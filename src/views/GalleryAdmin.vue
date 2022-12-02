@@ -64,7 +64,7 @@ function changeStatus(id, status) {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      windows.location.href = "/admin";
+      window.location.reload();
     });
 }
 
