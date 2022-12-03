@@ -57,67 +57,56 @@ animate();
 // change glaze
 
 function lichtroos_glazuur() {
-  console.log(donut);
   donut.children[0].material.color.set(0xF174BA);
 }
 
 function roos_glazuur(){
-  console.log(donut);
   donut.children[0].material.color.set(0xE72870);
 }
 
 function lichtbruin_glazuur() {
-  console.log(donut);
   donut.children[0].material.color.set(0xBB7E52);
 }
 
 function bruin_glazuur() {
-  console.log(donut);
   donut.children[0].material.color.set(0x673F37);
 }
 
 function oranje_glazuur() {
-  console.log(donut);
   donut.children[0].material.color.set(0xDA9034);
 }
 
 function geel_glazuur() {
-  console.log(donut);
   donut.children[0].material.color.set(0xEDBF04);
 }
 
 function green_glazuur() {
-  console.log(donut);
   donut.children[0].material.color.set(0x7D9A59);
 }
 
 function appelblauwzeegroen_glazuur() {
-  console.log(donut);
   donut.children[0].material.color.set(0xBED4C8);
 }
 
 function wit_glazuur() {
-  console.log(donut);
   donut.children[0].material.color.set(0xffffff);
 }
 
 function zwart_glazuur() {
-  console.log(donut);
   donut.children[0].material.color.set(0x1E0802);
 }
 
+// change dough
+
 function lichtbruin_deeg(){
-  console.log(donut);
   donut.children[1].material.color.set(0xffffff);
 }
 
 function bruin_deeg(){
-  console.log(donut);
   donut.children[1].material.color.set(0xd3d3d3);
 }
 
 function donkerbruin_deeg(){
-  console.log(donut);
   donut.children[1].material.color.set(0xa4a4a4);
 }
 
