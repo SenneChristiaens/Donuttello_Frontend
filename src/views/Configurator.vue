@@ -22,9 +22,15 @@ import Three from "../components/Three.vue";
       </label>
     </div> -->
 
-    <div class="configurator__donut">
+    <div class="configurator__glaze">
+      <h3>Selecteer de kleur van het glazuur</h3>
       <Three />
     </div>
+
+    <div class="configurator__donut">
+      
+    </div>
+
     <div class="configurator__form">
       <input type="text" name="name" required />
       <label for="name" class="configurator__label--wrapper">

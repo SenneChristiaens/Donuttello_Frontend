@@ -18,6 +18,32 @@
   }
 }
 
+.configurator__glaze{
+  padding-top: 1rem;
+  h3{
+    margin: 1rem 0 2rem 0;
+  }
+  button{
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    background-color: colors.$pink;
+    border-radius: 3rem;
+    color: colors.$yellow;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    display: inline-block;
+    font-family: "Dosis", sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  button:active{
+    background-color: colors.$yellow;
+    color: colors.$pink;
+  }
+}
+
 .configurator__form {
   margin-top: 1rem;
   position: relative;

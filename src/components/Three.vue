@@ -1,7 +1,9 @@
 <script setup>
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { ref, onMounted, onUnmounted } from "vue";
+
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -18,7 +20,7 @@ document.body.appendChild(renderer.domElement);
 renderer.setClearColor( 0xffffff, 0);
 
 // orbit controls
-const controls = new OrbitControls(camera, renderer.domElement);
+// const controls = new OrbitControls(camera, renderer.domElement);
 
 // ambient light
 const ambientLight = new THREE.AmbientLight( 0xffffff, 0.5 );
@@ -51,8 +53,72 @@ function animate() {
 }
 
 animate();
+
+// change glaze
+
+function roos(){
+  console.log(donut);
+  donut.children[0].material.color.set(0xE72870);
+}
+
+function lichtroos() {
+  console.log(donut);
+  donut.children[0].material.color.set(0xF174BA);
+}
+
+function bruin() {
+  console.log(donut);
+  donut.children[0].material.color.set(0x673F37);
+}
+
+function lichtbruin() {
+  console.log(donut);
+  donut.children[0].material.color.set(0xBB7E52);
+}
+
+function oranje() {
+  console.log(donut);
+  donut.children[0].material.color.set(0xDA9034);
+}
+
+function geel() {
+  console.log(donut);
+  donut.children[0].material.color.set(0xEDBF04);
+}
+
+function green() {
+  console.log(donut);
+  donut.children[0].material.color.set(0x7D9A59);
+}
+
+function appelblauwzeegroen() {
+  console.log(donut);
+  donut.children[0].material.color.set(0xBED4C8);
+}
+
+function wit() {
+  console.log(donut);
+  donut.children[0].material.color.set(0xffffff);
+}
+
+function zwart() {
+  console.log(donut);
+  donut.children[0].material.color.set(0x1E0802);
+}
+
 </script>
 
-<template></template>
+<template>
+  <button @click="roos">roos</button>
+  <button @click="lichtroos">lichtroos</button>
+  <button @click="bruin">bruin</button>
+  <button @click="lichtbruin">lichtbruin</button>
+  <button @click="oranje">oranje</button>
+  <button @click="geel">geel</button>
+  <button @click="green">groen</button>
+  <button @click="appelblauwzeegroen">appelblauwzeegroen</button>
+  <button @click="wit">wit</button>
+  <button @click="zwart">zwart</button>
+</template>
 
 <style></style>
