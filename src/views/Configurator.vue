@@ -23,7 +23,6 @@ import Three from "../components/Three.vue";
     </div> -->
 
     <div class="configurator__glaze">
-      <h3>Selecteer de kleur van het glazuur</h3>
       <Three />
     </div>
 

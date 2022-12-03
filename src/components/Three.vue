@@ -56,69 +56,90 @@ animate();
 
 // change glaze
 
-function roos(){
-  console.log(donut);
-  donut.children[0].material.color.set(0xE72870);
-}
-
-function lichtroos() {
+function lichtroos_glazuur() {
   console.log(donut);
   donut.children[0].material.color.set(0xF174BA);
 }
 
-function bruin() {
+function roos_glazuur(){
   console.log(donut);
-  donut.children[0].material.color.set(0x673F37);
+  donut.children[0].material.color.set(0xE72870);
 }
 
-function lichtbruin() {
+function lichtbruin_glazuur() {
   console.log(donut);
   donut.children[0].material.color.set(0xBB7E52);
 }
 
-function oranje() {
+function bruin_glazuur() {
+  console.log(donut);
+  donut.children[0].material.color.set(0x673F37);
+}
+
+function oranje_glazuur() {
   console.log(donut);
   donut.children[0].material.color.set(0xDA9034);
 }
 
-function geel() {
+function geel_glazuur() {
   console.log(donut);
   donut.children[0].material.color.set(0xEDBF04);
 }
 
-function green() {
+function green_glazuur() {
   console.log(donut);
   donut.children[0].material.color.set(0x7D9A59);
 }
 
-function appelblauwzeegroen() {
+function appelblauwzeegroen_glazuur() {
   console.log(donut);
   donut.children[0].material.color.set(0xBED4C8);
 }
 
-function wit() {
+function wit_glazuur() {
   console.log(donut);
   donut.children[0].material.color.set(0xffffff);
 }
 
-function zwart() {
+function zwart_glazuur() {
   console.log(donut);
   donut.children[0].material.color.set(0x1E0802);
+}
+
+function lichtbruin_deeg(){
+  console.log(donut);
+  donut.children[1].material.color.set(0xffffff);
+}
+
+function bruin_deeg(){
+  console.log(donut);
+  donut.children[1].material.color.set(0xd3d3d3);
+}
+
+function donkerbruin_deeg(){
+  console.log(donut);
+  donut.children[1].material.color.set(0xa4a4a4);
 }
 
 </script>
 
 <template>
-  <button @click="roos">roos</button>
-  <button @click="lichtroos">lichtroos</button>
-  <button @click="bruin">bruin</button>
-  <button @click="lichtbruin">lichtbruin</button>
-  <button @click="oranje">oranje</button>
-  <button @click="geel">geel</button>
-  <button @click="green">groen</button>
-  <button @click="appelblauwzeegroen">appelblauwzeegroen</button>
-  <button @click="wit">wit</button>
-  <button @click="zwart">zwart</button>
+  <h2>Kleuren</h2>
+  <h3>Glazuur</h3>
+  <button @click="lichtroos_glazuur">lichtroos</button>
+  <button @click="roos_glazuur">roos</button>
+  <button @click="lichtbruin_glazuur">lichtbruin</button>
+  <button @click="bruin_glazuur">bruin</button>
+  <button @click="oranje_glazuur">oranje</button>
+  <button @click="geel_glazuur">geel</button>
+  <button @click="green_glazuur">groen</button>
+  <button @click="appelblauwzeegroen_glazuur">appelblauwzeegroen</button>
+  <button @click="wit_glazuur">wit</button>
+  <button @click="zwart_glazuur">zwart</button>
+  <h3>Deeg</h3>
+  <button @click="lichtbruin_deeg">lichtbruin</button>
+  <button @click="bruin_deeg">bruin</button>
+  <button @click="donkerbruin_deeg">donkerbruin</button>
 </template>
 
 <style></style>
