@@ -16,7 +16,9 @@ const camera = new THREE.PerspectiveCamera(
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+onMounted(() => {
+  document.querySelector(".configurator__glaze").appendChild(renderer.domElement);
+});
 
 renderer.setClearColor( 0xffffff, 0);
 
