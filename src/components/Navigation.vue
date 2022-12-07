@@ -39,7 +39,7 @@ const isAdmin = computed(() => {
       <router-link to="/"><a class="nav__item">Home</a></router-link>
       <router-link to="/configurator"><a class="nav__item">Configurator</a></router-link>
       <router-link to="/login" v-if="isLoggedOut"><a class="nav__item"><font-awesome-icon class="icon" icon="fa-solid fa-user" /></a></router-link>
-      <router-link to="/admin" v-if="isAdmin"><a class="nav__item">Admin</a></router-link>
+      <router-link to="/admin" v-if="isAdmin"><a class="nav__item">Gallerij</a></router-link>
       <router-link to="/changepassword" v-if="isLoggedIn"><a class="nav__item"><font-awesome-icon class="icon" icon="fa-solid fa-user" /></a></router-link>
       <router-link to="/login" v-if="isLoggedIn"><a class="nav__item" @click="logout"><font-awesome-icon class="icon" icon="fa-solid fa-right-from-bracket"></font-awesome-icon></a></router-link>
     </div>
