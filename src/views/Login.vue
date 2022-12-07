@@ -34,6 +34,7 @@ function login() {
 if (localStorage.getItem("token")) {
   window.location.href = "/admin";
 }
+
 </script>
 
 <template>

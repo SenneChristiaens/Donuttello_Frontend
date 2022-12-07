@@ -24,7 +24,13 @@ nickname.value = localStorage.getItem("nickname");
 
 onMounted(() => {
   let apiUrl = "https://donuttello-backend-5chz.onrender.com/api/v1/donuts";
-  fetch(apiUrl)
+  fetch(apiUrl, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
       donuts.donuts = data.data.donuts;
@@ -113,9 +119,21 @@ function deleteDonut(donutId) {
         </p>
         <p class="gallery__status">Status: {{ donut.status }}</p>
         <div class="button--status">
-        <button class="button--hero" v-on:click="changeStatus(donut._id, 'Bestelling wordt klaargemaakt')">Bestelling wordt klaargemaakt</button>
-        <button class="button--hero" v-on:click="changeStatus(donut._id, 'Bestelling is klaar')">Bestelling is klaar</button>
-      </div>
+          <button
+            class="button--hero"
+            v-on:click="
+              changeStatus(donut._id, 'Bestelling wordt klaargemaakt')
+            "
+          >
+            Bestelling wordt klaargemaakt
+          </button>
+          <button
+            class="button--hero"
+            v-on:click="changeStatus(donut._id, 'Bestelling is klaar')"
+          >
+            Bestelling is klaar
+          </button>
+        </div>
       </div>
     </div>
   </div>
