@@ -53,7 +53,7 @@ scene.add(directionalLight);
 // import donut gltf
 let donut;
 const gltfLoaderDonut = new GLTFLoader();
-gltfLoaderDonut.load("/src/assets/Donut.gltf", (gltf) => {
+gltfLoaderDonut.load("/model/Donut.gltf", (gltf) => {
   donut = gltf.scene;
   gltf.scene.scale.set(5, 5, 5);
   gltf.scene.position.set(0, 0, 0);
