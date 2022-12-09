@@ -19,6 +19,7 @@
 }
 
 .configurator__glaze{
+  display: flex;
   padding-top: 1rem;
   h2{
     margin: 1rem 0 2rem 0;
@@ -51,7 +52,7 @@
   margin-top: 1rem;
   position: relative;
   height: 3.25rem;
-  width: 100%;
+  width: 50%;
   color: colors.$black;
   overflow: hidden;
 }
@@ -59,7 +60,7 @@
 .configurator__form input {
   position: absolute;
   height: 100%;
-  width: 100%;
+  width: 50%;
   color: colors.$black;
   font-size: 1.2rem;
   line-height: 3.25rem;
@@ -120,7 +121,7 @@
 }
 
 .configurator__button {
-  text-align: center;
+  text-align: start;
 
   button {
     background-color: colors.$yellow;
