@@ -8,7 +8,7 @@ let password = ref("");
 let message = ref(false);
 
 function login() {
-  fetch("http://localhost:3000/api/v1/admins/login", {
+  fetch("https://donuttello-backend-5chz.onrender.com/api/v1/admins/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
