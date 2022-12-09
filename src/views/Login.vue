@@ -22,7 +22,7 @@ function login() {
     .then((data) => {
       if (data.status === "success") {
         localStorage.setItem("token", data.token);
-        localStorage.setItem("nickname", data.nickname);
+        localStorage.setItem("username", data.username);
         window.location.href = "/admin";
       } else {
         console.log("Invalid login credentials");
