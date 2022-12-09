@@ -8,7 +8,7 @@ let password = ref("");
 let message = ref(false);
 
 function login() {
-  fetch("https://donuttello-backend-5chz.onrender.com/api/v1/admins/login", {
+  fetch("http://localhost:3000/api/v1/admins/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -22,7 +22,7 @@ function login() {
     .then((data) => {
       if (data.status === "success") {
         localStorage.setItem("token", data.token);
-        localStorage.setItem("username", data.username);
+        localStorage.setItem("nickname", data.nickname);
         window.location.href = "/admin";
       } else {
         console.log("Invalid login credentials");

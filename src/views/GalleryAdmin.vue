@@ -17,10 +17,10 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 library.add(faTrashCan);
 
 let filter = ref("date-new-to-old");
-let username = ref("");
+let nickname = ref("");
 let donuts = reactive({ donuts: [] });
 
-username.value = localStorage.getItem("username");
+nickname.value = localStorage.getItem("nickname");
 
 onMounted(() => {
   let apiUrl = "https://donuttello-backend-5chz.onrender.com/api/v1/donuts";
@@ -94,7 +94,7 @@ function deleteDonut(donutId) {
 <template>
   <Navigation />
   <h1 class="gallery__h1">
-    👋 Hallo {{ username }}, dit is de status van de
+    👋 Hallo {{ nickname }}, dit is de status van de
     <span class="text--pink">Bestellingen</span>
   </h1>
 
