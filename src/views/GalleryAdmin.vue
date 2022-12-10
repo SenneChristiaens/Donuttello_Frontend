@@ -129,11 +129,4 @@ function deleteDonut(donutId) {
   <Footerello />
 </template>
 
-<style>
-.button--status {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: center;
-}
-</style>
+<style scoped></style>

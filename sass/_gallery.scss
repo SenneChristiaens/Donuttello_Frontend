@@ -39,6 +39,13 @@
   padding: 2rem;
 }
 
+.button--status {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  justify-content: start;
+}
+
 .button--delete {
   background-color: rgb(243, 31, 31);
   border-radius: 3rem;
@@ -69,5 +76,11 @@
 @media screen and (min-width: 1440px) {
   .gallery {
     grid-template-columns: auto auto auto;
+  }
+
+  .button--status {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
   }
 }
