@@ -42,6 +42,18 @@ import Three from "../components/Three.vue";
         <span class="configurator__text">Email</span>
       </label>
     </div>
+    <div class="configurator__form">
+      <input type="email" name="email" autocomplete="on" required />
+      <label for="email" class="configurator__label--wrapper">
+        <span class="configurator__text">Aantal Donuts</span>
+      </label>
+    </div>
+    <div class="configurator__form">
+      <input type="text" name="name" required />
+      <label for="name" class="configurator__label--wrapper">
+        <span class="configurator__text">Opmerkingen (indien geen type "/")</span>
+      </label>
+    </div>
     <div class="configurator__button">
       <button class="hero__btn">Verstuur je donut!</button>
     </div>

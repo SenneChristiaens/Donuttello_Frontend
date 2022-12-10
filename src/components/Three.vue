@@ -186,6 +186,10 @@ function bruin_sprinkles() {
     <button @click="lichtbruin_deeg">lichtbruin</button>
     <button @click="bruin_deeg">bruin</button>
     <button @click="donkerbruin_deeg">donkerbruin</button>
+    <h2>Soort Sprinkles</h2>
+    <button>Suiker</button>
+    <h2>Bedrijfslogo</h2>
+    <input type="file" id="company__logo" name="logo" accept="image/png, image/jpeg, image/jpg">
   </div>
 </template>
 
