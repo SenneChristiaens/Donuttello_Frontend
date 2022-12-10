@@ -17,24 +17,21 @@ const camera = new THREE.PerspectiveCamera(
 console.log(window.innerWidth);
 console.log(window.innerHeight);
 
-
 const renderer = new THREE.WebGLRenderer();
 onMounted(() => {
   // renderer.setSize(document.querySelector(".configurator__glaze").clientWidths, document.querySelector(".configurator__glaze").clientHeight);
-  renderer.setSize(window.innerWidth/2, window.innerHeight/2);
+  renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
   document
     .querySelector(".configurator__glaze")
     .appendChild(renderer.domElement);
 });
 
-
 // change camera aspect ratio on resize
 window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth/2, window.innerHeight/2);
+  renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
 });
-
 
 renderer.setClearColor(0xffffff, 0);
 
@@ -53,23 +50,25 @@ scene.add(directionalLight);
 // import donut gltf
 let donut;
 const gltfLoaderDonut = new GLTFLoader();
-gltfLoaderDonut.load("/model/Donut.gltf", (gltf) => {
+gltfLoaderDonut.load("/model/Donut_marshmallows.gltf", (gltf) => {
   donut = gltf.scene;
   gltf.scene.scale.set(5, 5, 5);
   gltf.scene.position.set(0, 0, 0);
   scene.add(donut);
   gltf.scene.rotation.x = Math.PI * -0.2;
+  // toppings
+  donut.children[2].visible = false;
+  donut.children[3].visible = false;
 });
 
 // add plane
 const planeGeometry = new THREE.PlaneGeometry(0.1, 0.15);
-const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff});
+const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
 const plane = new THREE.Mesh(planeGeometry, planeMaterial);
 plane.position.set(0.15, 0, 0.103);
 plane.rotation.y = 0.06 * Math.PI;
 plane.rotation.x = -0.15 * Math.PI;
 scene.add(plane);
-
 
 camera.position.z = 0.5;
 
@@ -83,6 +82,18 @@ function animate() {
 }
 
 animate();
+
+// change toppings
+
+function sprinkles_true() {
+  donut.children[2].visible = true;
+  donut.children[3].visible = false;
+}
+
+function marshmallows_true() {
+  donut.children[3].visible = true;
+  donut.children[2].visible = false;
+}
 
 // change glaze
 
@@ -126,36 +137,22 @@ function zwart_glazuur() {
   donut.children[1].material.color.set(0x1e0802);
 }
 
-// change dough
+// change sprinkles color
 
-function lichtbruin_deeg() {
-  donut.children[0].material.color.set(0x8b4513);
-}
-
-function bruin_deeg() {
-  donut.children[0].material.color.set(0x5c3317);
-}
-
-function donkerbruin_deeg() {
-  donut.children[0].material.color.set(0x3e2317);
-}
-
-// change sprinkles
-
-function rood_sprinkles() {
-  donut.children[2].material.color.set(0xff0000);
+function roos_sprinkles() {
+  donut.children[2].material.color.set(0xff007f);
 }
 
 function geel_sprinkles() {
-  donut.children[2].material.color.set(0xffff00);
+  donut.children[2].material.color.set(0xfff458);
 }
 
 function groen_sprinkles() {
-  donut.children[2].material.color.set(0x00ff00);
+  donut.children[2].material.color.set(0x96ca7e);
 }
 
 function blauw_sprinkles() {
-  donut.children[2].material.color.set(0x0000ff);
+  donut.children[2].material.color.set(0x58a2e9);
 }
 
 function paars_sprinkles() {
@@ -173,9 +170,11 @@ function bruin_sprinkles() {
 
 <template>
   <div class="configurator__details">
-    <h2>Kleuren</h2>
-    <h3>Sprinkles</h3>
-    <button @click="rood_sprinkles">rood</button>
+    <h2>Toppings</h2>
+    <button @click="sprinkles_true">Suiker</button>
+    <button @click="marshmallows_true">Marshmallows</button>
+    <h3>Suiker</h3>
+    <button @click="roos_sprinkles">rood</button>
     <button @click="geel_sprinkles">geel</button>
     <button @click="groen_sprinkles">groen</button>
     <button @click="blauw_sprinkles">blauw</button>
@@ -193,14 +192,13 @@ function bruin_sprinkles() {
     <button @click="appelblauwzeegroen_glazuur">appelblauwzeegroen</button>
     <button @click="wit_glazuur">wit</button>
     <button @click="zwart_glazuur">zwart</button>
-    <h3>Deeg</h3>
-    <button @click="lichtbruin_deeg">lichtbruin</button>
-    <button @click="bruin_deeg">bruin</button>
-    <button @click="donkerbruin_deeg">donkerbruin</button>
-    <h2>Soort Sprinkles</h2>
-    <button>Suiker</button>
     <h2>Bedrijfslogo</h2>
-    <input type="file" id="company__logo" name="logo" accept="image/png, image/jpeg, image/jpg">
+    <input
+      type="file"
+      id="company__logo"
+      name="logo"
+      accept="image/png, image/jpeg, image/jpg"
+    />
   </div>
 </template>
 
