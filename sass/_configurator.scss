@@ -2,6 +2,13 @@
 
 .configurator__main {
   margin: 2rem;
+  margin-left: 8rem;
+  margin-right: 8rem;
+  hr{
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    border: 1px solid colors.$pink;
+  }
 }
 
 .configurator__donut {
@@ -16,6 +23,10 @@
     text-transform: uppercase;
     text-align: center;
   }
+}
+
+.details__h1{
+  margin-top: 2rem;
 }
 
 .suiker{

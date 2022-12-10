@@ -7,14 +7,7 @@ import Three from "../components/Three.vue";
 <template>
   <Navigation />
   <main class="configurator__main">
-    <h1 class="configurator__h1">Configurator</h1>
 
-    <div class="configurator__form">
-      <input type="text" name="name-donut" required />
-      <label for="name-donut" class="configurator__label--wrapper">
-        <span class="configurator__text">Naam Donut</span>
-      </label>
-    </div>
     <!-- <div class="configurator__form">
       <input type="color" name="color-glaze" value="#82d1e4" id="configurator__colorpicker" />
       <label for="color-glaze" class="configurator__color--wrapper">
@@ -24,6 +17,15 @@ import Three from "../components/Three.vue";
 
     <div class="configurator__glaze">
       <Three />
+    </div>
+
+    <hr>
+    <h1 class="details__h1">Details</h1>
+    <div class="configurator__form">
+      <input type="text" name="name-donut" required />
+      <label for="name-donut" class="configurator__label--wrapper">
+        <span class="configurator__text">Naam Donut</span>
+      </label>
     </div>
 
     <div class="configurator__donut">

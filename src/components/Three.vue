@@ -181,11 +181,12 @@ function hideSuiker() {
 
 <template>
   <div class="configurator__details">
+    <h1 class="configurator__h1">Configurator</h1>
     <h2>Toppings</h2>
     <button @click="sprinkles_true(); showSuiker();">Suiker</button>
     <button @click="marshmallows_true(); hideSuiker();">Marshmallows</button>
     <div class="suiker">
-      <h3>Suiker</h3>
+      <h2>Suiker</h2>
       <button @click="roos_sprinkles">rood</button>
       <button @click="geel_sprinkles">geel</button>
       <button @click="groen_sprinkles">groen</button>
@@ -194,7 +195,7 @@ function hideSuiker() {
       <button @click="wit_sprinkles">wit</button>
       <button @click="bruin_sprinkles">bruin</button>
     </div>
-    <h3>Glazuur</h3>
+    <h2>Glazuur</h2>
     <button @click="lichtroos_glazuur">lichtroos</button>
     <button @click="roos_glazuur">roos</button>
     <button @click="lichtbruin_glazuur">lichtbruin</button>
