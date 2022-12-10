@@ -39,7 +39,7 @@ window.addEventListener("resize", () => {
 renderer.setClearColor(0xffffff, 0);
 
 // orbit controls
-//const controls = new OrbitControls(camera, renderer.domElement);
+// const controls = new OrbitControls(camera, renderer.domElement);
 
 // ambient light
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -58,7 +58,18 @@ gltfLoaderDonut.load("/model/Donut.gltf", (gltf) => {
   gltf.scene.scale.set(5, 5, 5);
   gltf.scene.position.set(0, 0, 0);
   scene.add(donut);
+  gltf.scene.rotation.x = Math.PI * -0.2;
 });
+
+// add plane
+const planeGeometry = new THREE.PlaneGeometry(0.1, 0.15);
+const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff});
+const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+plane.position.set(0.15, 0, 0.103);
+plane.rotation.y = 0.06 * Math.PI;
+plane.rotation.x = -0.15 * Math.PI;
+scene.add(plane);
+
 
 camera.position.z = 0.5;
 
