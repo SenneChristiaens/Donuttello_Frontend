@@ -24,6 +24,18 @@ onMounted(() => {
   document
     .querySelector(".configurator__glaze")
     .appendChild(renderer.domElement);
+
+    document.getElementById("company__logo").addEventListener("change", (e) => {
+    console.log("changed");
+    let companyLogo = e.target.files[0];
+    console.log(companyLogo);
+    const companyMaterial = new THREE.MeshStandardMaterial({
+      map: new THREE.TextureLoader().load(URL.createObjectURL(companyLogo)),
+      side: THREE.DoubleSide,
+    });
+    let plane = scene.getObjectByName("plane");
+    plane.material = companyMaterial;
+  });
 });
 
 // change camera aspect ratio on resize
@@ -36,7 +48,7 @@ window.addEventListener("resize", () => {
 renderer.setClearColor(0xffffff, 0);
 
 // orbit controls
-// const controls = new OrbitControls(camera, renderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement);
 
 // ambient light
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -61,10 +73,10 @@ gltfLoaderDonut.load("/model/Donut_chocolate.gltf", (gltf) => {
   donut.children[3].visible = false;
 });
 
-// add plane
-const planeGeometry = new THREE.PlaneGeometry(0.1, 0.15);
-const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
-const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+const planeGeometry = new THREE.PlaneGeometry(0.15, 0.1);
+const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xD2D2D2 });
+let plane = new THREE.Mesh(planeGeometry, planeMaterial);
+plane.name = "plane";
 plane.position.set(0.15, 0, 0.103);
 plane.rotation.y = 0.06 * Math.PI;
 plane.rotation.x = -0.15 * Math.PI;
