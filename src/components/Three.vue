@@ -204,6 +204,18 @@ function hideSuiker() {
   document.querySelector(".suiker").style.height = "0";
 }
 
+// delete plane when clicking removelogo button
+
+function removePlane() {
+  scene.remove(plane);
+}
+
+// add plane when clicking addlogo button
+
+function addPlane() {
+  scene.add(plane);
+}
+
 </script>
 
 <template>
@@ -235,6 +247,8 @@ function hideSuiker() {
     <button @click="wit_glazuur">wit</button>
     <button @click="zwart_glazuur">zwart</button>
     <h2>Bedrijfslogo</h2>
+    <button class="addlogo" @click="addPlane">Ja</button>
+    <button class="removelogo" @click="removePlane">Nee</button>
     <input
       type="file"
       id="company__logo"
