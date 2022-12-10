@@ -33,7 +33,7 @@ onMounted(() => {
       map: new THREE.TextureLoader().load(URL.createObjectURL(companyLogo)),
       side: THREE.DoubleSide,
       color: 0xffffff, 
-        flatShading: true,
+      flatShading: true,
         depthWrite: false, 
         combine: THREE.MixOperation, 
         transparent: true,
@@ -77,6 +77,8 @@ gltfLoaderDonut.load("/model/Donut_chocolate.gltf", (gltf) => {
   // toppings
   donut.children[2].visible = false;
   donut.children[3].visible = false;
+  donut.children[1].material.color.set(0xffffff);
+  donut.children[4].visible = false;
 });
 
 const planeGeometry = new THREE.PlaneGeometry(0.15, 0.1);
@@ -222,11 +224,11 @@ function addPlane() {
   <div class="configurator__details">
     <h1 class="configurator__h1">Configurator</h1>
     <h2>Toppings</h2>
-    <button @click="sprinkles_true(); showSuiker();">Suiker</button>
+    <button @click="sprinkles_true(); showSuiker();">Sprinkels</button>
     <button @click="marshmallows_true(); hideSuiker();">Marshmallows</button>
     <button @click="chocolate_true(); hideSuiker();">Chocolade</button>
     <div class="suiker">
-      <h2>Suiker</h2>
+      <h2>Sprinkels</h2>
       <button @click="roos_sprinkles">rood</button>
       <button @click="geel_sprinkles">geel</button>
       <button @click="groen_sprinkles">groen</button>
