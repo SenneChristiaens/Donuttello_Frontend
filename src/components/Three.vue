@@ -50,7 +50,7 @@ scene.add(directionalLight);
 // import donut gltf
 let donut;
 const gltfLoaderDonut = new GLTFLoader();
-gltfLoaderDonut.load("/model/Donut_marshmallows.gltf", (gltf) => {
+gltfLoaderDonut.load("/model/Donut_chocolate.gltf", (gltf) => {
   donut = gltf.scene;
   gltf.scene.scale.set(5, 5, 5);
   gltf.scene.position.set(0, 0, 0);
@@ -88,10 +88,19 @@ animate();
 function sprinkles_true() {
   donut.children[2].visible = true;
   donut.children[3].visible = false;
+  donut.children[4].visible = false;
 }
 
 function marshmallows_true() {
   donut.children[3].visible = true;
+  donut.children[2].visible = false;
+  donut.children[4].visible = false;
+
+}
+
+function chocolate_true() {
+  donut.children[4].visible = true;
+  donut.children[3].visible = false;
   donut.children[2].visible = false;
 }
 
@@ -185,6 +194,7 @@ function hideSuiker() {
     <h2>Toppings</h2>
     <button @click="sprinkles_true(); showSuiker();">Suiker</button>
     <button @click="marshmallows_true(); hideSuiker();">Marshmallows</button>
+    <button @click="chocolate_true(); hideSuiker();">Chocolade</button>
     <div class="suiker">
       <h2>Suiker</h2>
       <button @click="roos_sprinkles">rood</button>
