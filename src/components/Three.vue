@@ -166,21 +166,34 @@ function wit_sprinkles() {
 function bruin_sprinkles() {
   donut.children[2].material.color.set(0x8b4513);
 }
+
+function showSuiker() {
+  document.querySelector(".suiker").style.visibility = "visible";
+  document.querySelector(".suiker").style.height = "auto";
+}
+
+function hideSuiker() {
+  document.querySelector(".suiker").style.visibility = "hidden";
+  document.querySelector(".suiker").style.height = "0";
+}
+
 </script>
 
 <template>
   <div class="configurator__details">
     <h2>Toppings</h2>
-    <button @click="sprinkles_true">Suiker</button>
-    <button @click="marshmallows_true">Marshmallows</button>
-    <h3>Suiker</h3>
-    <button @click="roos_sprinkles">rood</button>
-    <button @click="geel_sprinkles">geel</button>
-    <button @click="groen_sprinkles">groen</button>
-    <button @click="blauw_sprinkles">blauw</button>
-    <button @click="paars_sprinkles">paars</button>
-    <button @click="wit_sprinkles">wit</button>
-    <button @click="bruin_sprinkles">bruin</button>
+    <button @click="sprinkles_true(); showSuiker();">Suiker</button>
+    <button @click="marshmallows_true(); hideSuiker();">Marshmallows</button>
+    <div class="suiker">
+      <h3>Suiker</h3>
+      <button @click="roos_sprinkles">rood</button>
+      <button @click="geel_sprinkles">geel</button>
+      <button @click="groen_sprinkles">groen</button>
+      <button @click="blauw_sprinkles">blauw</button>
+      <button @click="paars_sprinkles">paars</button>
+      <button @click="wit_sprinkles">wit</button>
+      <button @click="bruin_sprinkles">bruin</button>
+    </div>
     <h3>Glazuur</h3>
     <button @click="lichtroos_glazuur">lichtroos</button>
     <button @click="roos_glazuur">roos</button>
