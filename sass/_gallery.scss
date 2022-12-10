@@ -39,6 +39,21 @@
   padding: 2rem;
 }
 
+.button--delete {
+  background-color: rgb(243, 31, 31);
+  border-radius: 3rem;
+  color: colors.$white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin: 3rem 0 0 0;
+  display: inline-block;
+  font-family: "Dosis", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 905px) {
   .gallery {
     display: grid;

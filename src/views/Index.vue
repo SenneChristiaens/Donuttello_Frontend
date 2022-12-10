@@ -23,15 +23,10 @@ import Footerello from "../components/Footerello.vue";
         alt="freakshake"
       />
       <div class="info__text">
-        <h2 class="info__h2">Bekijk onze gallerij</h2>
+        <h2 class="info__h2">Speciaal Moment Op De Planning?</h2>
         <p class="info__p">
-          Wat inspiratie nodig bij het ontwerpen van je eigen donut? Geen
-          probleem, bekijk onze gallerij met donuts van bedrijven die al een
-          bestelling hebben gemaakt.
+          Maak het compleet met een uniek geschenk waar iedereen van kan genieten.  Als originele attentie of dessert op een grote dag... Iedereen wordt blij van Donuttello Donuts.
         </p>
-        <router-link to="/gallery"
-          ><button class="info__btn">Gallerij</button></router-link
-        >
       </div>
     </div>
   </main>

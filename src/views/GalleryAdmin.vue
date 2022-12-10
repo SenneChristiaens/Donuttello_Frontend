@@ -4,18 +4,6 @@ import moment from "moment";
 import Footerello from "../components/Footerello.vue";
 import Navigation from "../components/Navigation.vue";
 
-/* import the fontawesome core */
-import { library } from "@fortawesome/fontawesome-svg-core";
-
-/* import font awesome icon component */
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-/* import specific icons */
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-
-/* add icons to the library */
-library.add(faTrashCan);
-
 let filter = ref("date-new-to-old");
 let nickname = ref("");
 let donuts = reactive({ donuts: [] });
@@ -107,11 +95,6 @@ function deleteDonut(donutId) {
     <div class="gallery__item" v-for="donut in donuts.donuts" :key="donut.id">
       <img class="gallery__image" :src="donut.url" alt="donut" />
       <div class="gallery__info">
-        <FontAwesomeIcon
-          class="icon"
-          icon="trash-can"
-          v-on:click.prevent="deleteDonut(donut._id)"
-        />
         <h2 class="gallery__company">Voor {{ donut.company }}</h2>
         <h3 class="gallery__title">{{ donut.name }}</h3>
         <p class="gallery__date">
@@ -133,7 +116,13 @@ function deleteDonut(donutId) {
           >
             Bestelling is klaar
           </button>
-        </div>
+        </div>          
+        <button
+          class="button--delete"
+          v-on:click.prevent="deleteDonut(donut._id)"
+        >
+          Verwijder Donut
+        </button>
       </div>
     </div>
   </div>
@@ -143,12 +132,8 @@ function deleteDonut(donutId) {
 <style>
 .button--status {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 1rem;
   align-items: center;
-}
-
-.icon {
-  padding-top: 2.5px;
-  color: #82d1e4;
 }
 </style>
