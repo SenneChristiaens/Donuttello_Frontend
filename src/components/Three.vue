@@ -32,6 +32,12 @@ onMounted(() => {
     const companyMaterial = new THREE.MeshStandardMaterial({
       map: new THREE.TextureLoader().load(URL.createObjectURL(companyLogo)),
       side: THREE.DoubleSide,
+      color: 0xffffff, 
+        flatShading: true,
+        depthWrite: false, 
+        combine: THREE.MixOperation, 
+        transparent: true,
+         alphaTest: 0.5, 
     });
     let plane = scene.getObjectByName("plane");
     plane.material = companyMaterial;
