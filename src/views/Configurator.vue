@@ -7,7 +7,6 @@ import Three from "../components/Three.vue";
 <template>
   <Navigation />
   <main class="configurator__main">
-
     <!-- <div class="configurator__form">
       <input type="color" name="color-glaze" value="#82d1e4" id="configurator__colorpicker" />
       <label for="color-glaze" class="configurator__color--wrapper">
@@ -19,7 +18,7 @@ import Three from "../components/Three.vue";
       <Three />
     </div>
 
-    <hr>
+    <hr />
     <h1 class="details__h1">Details</h1>
     <div class="configurator__form">
       <input type="text" name="name-donut" required />
@@ -28,9 +27,7 @@ import Three from "../components/Three.vue";
       </label>
     </div>
 
-    <div class="configurator__donut">
-      
-    </div>
+    <div class="configurator__donut"></div>
 
     <div class="configurator__form">
       <input type="text" name="name" required />
@@ -45,15 +42,15 @@ import Three from "../components/Three.vue";
       </label>
     </div>
     <div class="configurator__form">
-      <input type="email" name="email" autocomplete="on" required />
+      <input type="number" name="number" autocomplete="on" required />
       <label for="email" class="configurator__label--wrapper">
         <span class="configurator__text">Aantal Donuts</span>
       </label>
     </div>
     <div class="configurator__form">
-      <input type="text" name="name" required />
+      <input type="text" name="name" />
       <label for="name" class="configurator__label--wrapper">
-        <span class="configurator__text">Opmerkingen (indien geen type "/")</span>
+        <span class="configurator__text">Opmerkingen</span>
       </label>
     </div>
     <div class="configurator__button">
@@ -63,6 +60,4 @@ import Three from "../components/Three.vue";
   <Footerello />
 </template>
 
-<style>
-
-</style>
+<style></style>
