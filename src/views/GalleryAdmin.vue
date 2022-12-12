@@ -77,7 +77,7 @@ function sorting() {
 }
 
 function changeStatus(id, status) {
-  let apiUrl = `http://localhost:3000/api/v1/donuts/${id}`;
+  let apiUrl = `https://donuttello-backend-5chz.onrender.com/api/v1/donuts/${id}`;
   fetch(apiUrl, {
     method: "PUT",
     headers: {
