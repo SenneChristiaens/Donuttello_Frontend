@@ -65,9 +65,10 @@ directionalLight.position.set(30, 20, 10);
 scene.add(directionalLight);
 
 // import donut gltf
+let donut;
 const gltfLoaderDonut = new GLTFLoader();
 gltfLoaderDonut.load("/model/Donut_chocolate.gltf", (gltf) => {
-  let donut = gltf.scene;
+  donut = gltf.scene;
   gltf.scene.scale.set(5, 5, 5);
   gltf.scene.position.set(0, 0, 0);
   scene.add(donut);
@@ -214,7 +215,7 @@ function addPlane() {
 
 const logo = document.getElementById("company__logo");
 
-let donut = scene.getObjectByName("Donut_chocolate");
+// let donut = scene.getObjectByName("Donut_chocolate");
 // let dough = donut.children[0];
 // let glaze = donut.children[1];
 // let topping = donut.children[2];
@@ -311,13 +312,13 @@ function postDonut() {
     <h2>Bedrijfslogo</h2>
     <button class="addlogo" @click="addPlane">Ja</button>
     <button class="removelogo" @click="removePlane">Nee</button>
-      <input
-        v-on:change="uploadFile"
-        type="file"
-        id="company__logo"
-        name="logo"
-        accept="image/png, image/jpeg, image/jpg"
-      />
+    <input
+      v-on:change="uploadFile"
+      type="file"
+      id="company__logo"
+      name="logo"
+      accept="image/png, image/jpeg, image/jpg"
+    />
   </div>
   <div>
     <form @submit.prevent="postDonut">
