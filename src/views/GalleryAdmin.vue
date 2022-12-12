@@ -4,6 +4,26 @@ import moment from "moment";
 import Footerello from "../components/Footerello.vue";
 import Navigation from "../components/Navigation.vue";
 
+let primus = Primus.connect("http://localhost:3000", {
+  reconnect: {
+    max: Infinity, // Number: The max delay before we try to reconnect.
+    min: 500, // Number: The minimum delay before we try reconnect.
+    retries: 10, // Number: How many times we should try to reconnect.
+  },
+});
+
+primus.on("data", (data) => {
+  if (data.action === "update") {
+    donuts.donuts = donuts.donuts.map((donut) => {
+      if (donut._id === data.data._id) {
+        return data.data;
+      } else {
+        return donut;
+      }
+    });
+  }
+});
+
 let filter = ref("date-new-to-old");
 let nickname = ref("");
 let donuts = reactive({ donuts: [] });
@@ -57,8 +77,11 @@ function changeStatus(id, status) {
   })
     .then((response) => response.json())
     .then((data) => {
+      primus.write({
+        action: "update",
+        data: data.data.donut,
+      });
       console.log(data);
-      window.location.reload();
     });
 }
 
@@ -116,7 +139,7 @@ function deleteDonut(donutId) {
           >
             Bestelling is klaar
           </button>
-        </div>          
+        </div>
         <button
           class="button--delete"
           v-on:click.prevent="deleteDonut(donut._id)"
