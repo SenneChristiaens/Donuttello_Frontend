@@ -52,6 +52,7 @@
   color: colors.$white;
   border: none;
   padding: 1rem 2rem;
+  width: 100%;
   font-size: 1rem;
   text-transform: uppercase;
   margin: 3rem 0 0 0;
@@ -82,5 +83,9 @@
     display: flex;
     flex-direction: row;
     gap: 1rem;
+  }
+
+  .button--delete {
+  margin: 1rem 0 0 0;
   }
 }
