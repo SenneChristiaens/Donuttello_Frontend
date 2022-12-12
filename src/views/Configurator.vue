@@ -41,43 +41,45 @@ function postDonut() {
 
     <hr />
     <form @submit.prevent="postDonut">
+    <div class="configurator__formulier">
       <h1 class="details__h1">Details</h1>
-      <div class="configurator__form">
-        <input type="text" name="name-donut" required />
-        <label for="name-donut" class="configurator__label--wrapper">
-          <span class="configurator__text">Naam Donut</span>
-        </label>
-      </div>
+        <div class="configurator__form">
+          <input type="text" name="name-donut" required />
+          <label for="name-donut" class="configurator__label--wrapper">
+            <span class="configurator__text">Naam Donut</span>
+          </label>
+        </div>
 
       <div class="configurator__donut"></div>
 
-      <div class="configurator__form">
-        <input type="text" name="name" required />
-        <label for="name" class="configurator__label--wrapper">
-          <span class="configurator__text">Naam Bedrijf</span>
-        </label>
-      </div>
-      <div class="configurator__form">
-        <input type="email" name="email" autocomplete="on" required />
-        <label for="email" class="configurator__label--wrapper">
-          <span class="configurator__text">Email</span>
-        </label>
-      </div>
-      <div class="configurator__form">
-        <input type="number" name="number" autocomplete="on" required />
-        <label for="email" class="configurator__label--wrapper">
-          <span class="configurator__text">Aantal Donuts</span>
-        </label>
-      </div>
-      <div class="configurator__form">
-        <input type="text" name="comment" required />
-        <label for="comment" class="configurator__label--wrapper">
-          <span class="configurator__text">Opmerkingen</span>
-        </label>
-      </div>
-      <div class="configurator__button">
-        <button type="submit" class="hero__btn">Verstuur je donut!</button>
-      </div>
+    <div class="configurator__form">
+      <input type="text" name="name" required />
+      <label for="name" class="configurator__label--wrapper">
+        <span class="configurator__text">Naam Bedrijf</span>
+      </label>
+    </div>
+    <div class="configurator__form">
+      <input type="email" name="email" autocomplete="on" required />
+      <label for="email" class="configurator__label--wrapper">
+        <span class="configurator__text">Email</span>
+      </label>
+    </div>
+    <div class="configurator__form">
+      <input type="number" name="number" autocomplete="on" required />
+      <label for="email" class="configurator__label--wrapper">
+        <span class="configurator__text">Aantal Donuts</span>
+      </label>
+    </div>
+    <div class="configurator__form">
+      <input type="text" name="name" />
+      <label for="name" class="configurator__label--wrapper">
+        <span class="configurator__text">Opmerkingen</span>
+      </label>
+    </div>
+    <div class="configurator__button">
+      <button class="hero__btn">Verstuur je donut!</button>
+    </div>
+    </div>
     </form>
   </main>
   <Footerello />
