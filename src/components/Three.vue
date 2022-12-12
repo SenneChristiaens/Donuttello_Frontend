@@ -65,10 +65,9 @@ directionalLight.position.set(30, 20, 10);
 scene.add(directionalLight);
 
 // import donut gltf
-let donut;
 const gltfLoaderDonut = new GLTFLoader();
 gltfLoaderDonut.load("/model/Donut_chocolate.gltf", (gltf) => {
-  donut = gltf.scene;
+  let donut = gltf.scene;
   gltf.scene.scale.set(5, 5, 5);
   gltf.scene.position.set(0, 0, 0);
   scene.add(donut);
@@ -213,16 +212,14 @@ function addPlane() {
   scene.add(plane);
 }
 
-// loop through mesh
+const logo = document.getElementById("company__logo");
 
-function loopThroughMesh() {
-  donut.traverse((child) => {
-    if (child.isMesh) {
-      child.material.color.set(0x000000);
-    }
-  });
-}
-
+let donut = scene.getObjectByName("Donut_chocolate");
+// let dough = donut.children[0];
+// let glaze = donut.children[1];
+// let topping = donut.children[2];
+// let glazeColor = donut.children[1].material.color;
+// let toppingColor = donut.children[2].material.color;
 let donutName = ref("");
 let company = ref("");
 let companyLogo = ref("");
@@ -230,40 +227,34 @@ let email = ref("");
 let snapshot = ref("");
 let quantity = ref("");
 let comment = ref("");
-let dough = donut.children[0];
-let glaze = donut.children[1];
-let glazeColor = donut.children[1].material.color;
-let topping = donut.children[2];
-let toppingColor = donut.children[2].material.color;
 
 function postDonut() {
-  fetch("https://donuttello-backend-5chz.onrender.com/api/v1/donuts", {
+  let donut = {
+    // get the url from company logo
+    donutName: donutName.value,
+    company: company.value,
+    companyLogo: companyLogo.value,
+    email: email.value,
+    snapshot: snapshot.value,
+    quantity: quantity.value,
+    comment: comment.value,
+    // dough: dough,
+    // glaze: glaze,
+    // glazeColor: glazeColor,
+    // topping: topping,
+    // toppingColor: toppingColor,
+  };
+  console.log(donut);
+  fetch("https://donuttello-backend-5chz.onrender.com/api/v1/donuts/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      donutName: donutName.value,
-      company: company.value,
-      companyLogo: companyLogo.value,
-      email: email.value,
-      snapshot: snapshot,
-      quantity: quantity.value,
-      comment: comment.value,
-      dough: dough,
-      glaze: glaze,
-      glazeColor: glazeColor,
-      topping: topping,
-      toppingColor: toppingColor,
-    }),
+    body: JSON.stringify(donut),
   })
-    .then((response) => response.json())
+    .then((res) => res.json())
     .then((data) => {
-      if (data.status === "success") {
-        message.value = "Je donut is toegevoegd!";
-      } else {
-        message.value = "Er is iets misgegaan, probeer het opnieuw.";
-      }
+      console.log(data);
     });
 }
 </script>
@@ -320,12 +311,13 @@ function postDonut() {
     <h2>Bedrijfslogo</h2>
     <button class="addlogo" @click="addPlane">Ja</button>
     <button class="removelogo" @click="removePlane">Nee</button>
-    <input
-      type="file"
-      id="company__logo"
-      name="logo"
-      accept="image/png, image/jpeg, image/jpg"
-    />
+      <input
+        v-on:change="uploadFile"
+        type="file"
+        id="company__logo"
+        name="logo"
+        accept="image/png, image/jpeg, image/jpg"
+      />
   </div>
   <div>
     <form @submit.prevent="postDonut">
