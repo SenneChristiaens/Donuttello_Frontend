@@ -4,7 +4,7 @@ import moment from "moment";
 import Footerello from "../components/Footerello.vue";
 import Navigation from "../components/Navigation.vue";
 
-let primus = Primus.connect("http://localhost:3000", {
+let primus = Primus.connect("https://donuttello-backend-5chz.onrender.com/", {
   reconnect: {
     max: Infinity, // Number: The max delay before we try to reconnect.
     min: 500, // Number: The minimum delay before we try reconnect.
