@@ -13,6 +13,14 @@ let primus = Primus.connect("https://donuttello-backend-5chz.onrender.com/", {
 });
 
 primus.on("data", (data) => {
+    if (data.action === "create") {
+    donuts.donuts = data.data;
+  }
+  if (data.action === "delete") {
+    donuts.donuts = donuts.donuts.filter((donut) => {
+      return donut._id !== data.data._id;
+    });
+  }
   if (data.action === "update") {
     donuts.donuts = donuts.donuts.map((donut) => {
       if (donut._id === data.data._id) {
@@ -43,8 +51,12 @@ onMounted(() => {
     .then((data) => {
       donuts.donuts = data.data.donuts;
       donuts.donuts.sort((a, b) =>
-        new Date(b.date) > new Date(a.date) ? 1 : -1
+      new Date(b.date) > new Date(a.date) ? 1 : -1
       );
+      primus.write({
+        action: "create",
+        data: data.data.donuts,
+      })
     });
 });
 
@@ -81,7 +93,6 @@ function changeStatus(id, status) {
         action: "update",
         data: data.data.donut,
       });
-      console.log(data);
     });
 }
 
@@ -97,7 +108,10 @@ function deleteDonut(donutId) {
   })
     .then((response) => response.json())
     .then((data) => {
-      window.location.href = "/admin";
+      primus.write({
+        action: "delete",
+        data: data.data.donut,
+      });
     });
 }
 </script>
