@@ -3,26 +3,6 @@ import Footerello from "../components/Footerello.vue";
 import Navigation from "../components/Navigation.vue";
 import Three from "../components/Three.vue";
 
-function postDonut() {
-  fetch("https://donuttello-backend-5chz.onrender.com/api/v1/donuts", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      color: color.value,
-      glaze: glaze.value,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.status === "success") {
-        message.value = "Je donut is toegevoegd!";
-      } else {
-        message.value = "Er is iets misgegaan, probeer het opnieuw.";
-      }
-    });
-}
 </script>
 
 <template>
@@ -38,49 +18,6 @@ function postDonut() {
     <div class="configurator__glaze">
       <Three />
     </div>
-
-    <hr />
-    <form @submit.prevent="postDonut">
-      <div class="configurator__formulier">
-        <h1 class="details__h1">Details</h1>
-        <div class="configurator__form">
-          <input type="text" name="name-donut" required />
-          <label for="name-donut" class="configurator__label--wrapper">
-            <span class="configurator__text">Naam Donut</span>
-          </label>
-        </div>
-
-        <div class="configurator__donut"></div>
-
-        <div class="configurator__form">
-          <input type="text" name="name" required />
-          <label for="name" class="configurator__label--wrapper">
-            <span class="configurator__text">Naam Bedrijf</span>
-          </label>
-        </div>
-        <div class="configurator__form">
-          <input type="email" name="email" autocomplete="on" required />
-          <label for="email" class="configurator__label--wrapper">
-            <span class="configurator__text">Email</span>
-          </label>
-        </div>
-        <div class="configurator__form">
-          <input type="number" name="number" autocomplete="on" required />
-          <label for="email" class="configurator__label--wrapper">
-            <span class="configurator__text">Aantal Donuts</span>
-          </label>
-        </div>
-        <div class="configurator__form">
-          <input type="text" name="name" required />
-          <label for="name" class="configurator__label--wrapper">
-            <span class="configurator__text">Opmerkingen</span>
-          </label>
-        </div>
-        <div class="configurator__button">
-          <button class="hero__btn">Verstuur je donut!</button>
-        </div>
-      </div>
-    </form>
   </main>
   <Footerello />
 </template>

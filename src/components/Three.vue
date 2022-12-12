@@ -2,7 +2,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted } from "vue";
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -24,19 +24,19 @@ onMounted(() => {
     .querySelector(".configurator__glaze")
     .appendChild(renderer.domElement);
 
-    document.getElementById("company__logo").addEventListener("change", (e) => {
+  document.getElementById("company__logo").addEventListener("change", (e) => {
     console.log("changed");
     let companyLogo = e.target.files[0];
     console.log(companyLogo);
     const companyMaterial = new THREE.MeshStandardMaterial({
       map: new THREE.TextureLoader().load(URL.createObjectURL(companyLogo)),
       side: THREE.DoubleSide,
-      color: 0xffffff, 
+      color: 0xffffff,
       flatShading: true,
-        depthWrite: false, 
-        combine: THREE.MixOperation, 
-        transparent: true,
-         alphaTest: 0.5, 
+      depthWrite: false,
+      combine: THREE.MixOperation,
+      transparent: true,
+      alphaTest: 0.5,
     });
     let plane = scene.getObjectByName("plane");
     plane.material = companyMaterial;
@@ -81,7 +81,7 @@ gltfLoaderDonut.load("/model/Donut_chocolate.gltf", (gltf) => {
 });
 
 const planeGeometry = new THREE.PlaneGeometry(0.15, 0.1);
-const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xD2D2D2 });
+const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xd2d2d2 });
 let plane = new THREE.Mesh(planeGeometry, planeMaterial);
 plane.name = "plane";
 plane.position.set(0.15, 0, 0.103);
@@ -93,9 +93,6 @@ camera.position.z = 0.5;
 
 function animate() {
   requestAnimationFrame(animate);
-
-  //cube.rotation.x += 0.01;
-  //cube.rotation.y += 0.01;
 
   renderer.render(scene, camera);
 }
@@ -114,7 +111,6 @@ function marshmallows_true() {
   donut.children[3].visible = true;
   donut.children[2].visible = false;
   donut.children[4].visible = false;
-
 }
 
 function chocolate_true() {
@@ -217,15 +213,89 @@ function addPlane() {
   scene.add(plane);
 }
 
+// loop through mesh
+
+function loopThroughMesh() {
+  donut.traverse((child) => {
+    if (child.isMesh) {
+      child.material.color.set(0x000000);
+    }
+  });
+}
+
+let donutName = ref("");
+let company = ref("");
+let companyLogo = ref("");
+let email = ref("");
+let snapshot = ref("");
+let quantity = ref("");
+let comment = ref("");
+let dough = donut.children[0];
+let glaze = donut.children[1];
+let glazeColor = donut.children[1].material.color;
+let topping = donut.children[2];
+let toppingColor = donut.children[2].material.color;
+
+function postDonut() {
+  fetch("https://donuttello-backend-5chz.onrender.com/api/v1/donuts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      donutName: donutName.value,
+      company: company.value,
+      companyLogo: companyLogo.value,
+      email: email.value,
+      snapshot: snapshot,
+      quantity: quantity.value,
+      comment: comment.value,
+      dough: dough,
+      glaze: glaze,
+      glazeColor: glazeColor,
+      topping: topping,
+      toppingColor: toppingColor,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.status === "success") {
+        message.value = "Je donut is toegevoegd!";
+      } else {
+        message.value = "Er is iets misgegaan, probeer het opnieuw.";
+      }
+    });
+}
 </script>
 
 <template>
   <div class="configurator__details">
     <h1 class="configurator__h1">Configurator</h1>
     <h2>Toppings</h2>
-    <button @click="sprinkles_true(); showSuiker();">Sprinkels</button>
-    <button @click="marshmallows_true(); hideSuiker();">Marshmallows</button>
-    <button @click="chocolate_true(); hideSuiker();">Chocolade</button>
+    <button
+      @click="
+        sprinkles_true();
+        showSuiker();
+      "
+    >
+      Sprinkels
+    </button>
+    <button
+      @click="
+        marshmallows_true();
+        hideSuiker();
+      "
+    >
+      Marshmallows
+    </button>
+    <button
+      @click="
+        chocolate_true();
+        hideSuiker();
+      "
+    >
+      Chocolade
+    </button>
     <div class="suiker">
       <h2>Sprinkels</h2>
       <button @click="roos_sprinkles">rood</button>
@@ -256,6 +326,61 @@ function addPlane() {
       name="logo"
       accept="image/png, image/jpeg, image/jpg"
     />
+  </div>
+  <div>
+    <form @submit.prevent="postDonut">
+      <div class="configurator__formulier">
+        <h1 class="details__h1">Details</h1>
+        <div class="configurator__form">
+          <input v-model="donutName" type="text" name="donutName" required />
+          <label for="donutName" class="configurator__label--wrapper">
+            <span class="configurator__text">Naam Donut</span>
+          </label>
+        </div>
+
+        <div class="configurator__donut"></div>
+
+        <div class="configurator__form">
+          <input v-model="company" type="text" name="company" required />
+          <label for="company" class="configurator__label--wrapper">
+            <span class="configurator__text">Naam Bedrijf</span>
+          </label>
+        </div>
+        <div class="configurator__form">
+          <input
+            v-model="email"
+            type="email"
+            name="email"
+            autocomplete="on"
+            required
+          />
+          <label for="email" class="configurator__label--wrapper">
+            <span class="configurator__text">Email</span>
+          </label>
+        </div>
+        <div class="configurator__form">
+          <input
+            v-model="quantity"
+            type="number"
+            name="quantity"
+            autocomplete="on"
+            required
+          />
+          <label for="quantity" class="configurator__label--wrapper">
+            <span class="configurator__text">Aantal Donuts</span>
+          </label>
+        </div>
+        <div class="configurator__form">
+          <input v-model="comment" type="text" name="comment" required />
+          <label for="comment" class="configurator__label--wrapper">
+            <span class="configurator__text">Opmerkingen</span>
+          </label>
+        </div>
+        <div class="configurator__button">
+          <button type="submit" class="hero__btn">Verstuur je donut!</button>
+        </div>
+      </div>
+    </form>
   </div>
 </template>
 

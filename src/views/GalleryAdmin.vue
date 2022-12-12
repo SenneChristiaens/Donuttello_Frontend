@@ -13,7 +13,7 @@ let primus = Primus.connect("https://donuttello-backend-5chz.onrender.com/", {
 });
 
 primus.on("data", (data) => {
-    if (data.action === "create") {
+  if (data.action === "create") {
     donuts.donuts = data.data;
   }
   if (data.action === "delete") {
@@ -51,12 +51,12 @@ onMounted(() => {
     .then((data) => {
       donuts.donuts = data.data.donuts;
       donuts.donuts.sort((a, b) =>
-      new Date(b.date) > new Date(a.date) ? 1 : -1
+        new Date(b.date) > new Date(a.date) ? 1 : -1
       );
       primus.write({
         action: "create",
         data: data.data.donuts,
-      })
+      });
     });
 });
 
@@ -77,11 +77,12 @@ function sorting() {
 }
 
 function changeStatus(id, status) {
-  let apiUrl = `https://donuttello-backend-5chz.onrender.com/api/v1/donuts/${id}`;
+  let apiUrl = `http://localhost:3000/api/v1/donuts/${id}`;
   fetch(apiUrl, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     body: JSON.stringify({
       status: status,
@@ -135,7 +136,7 @@ function deleteDonut(donutId) {
       </router-link>
       <div class="gallery__info">
         <h2 class="gallery__company">Voor {{ donut.company }}</h2>
-        <h3 class="gallery__title">{{ donut.name }}</h3>
+        <h3 class="gallery__title">{{ donut.donutName }}</h3>
         <p class="gallery__date">
           Gemaakt op {{ moment(donut.date).format("DD MMMM YYYY") }}
         </p>
