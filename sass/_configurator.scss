@@ -154,6 +154,14 @@
   box-sizing: border-box;
 }
 
+.configurator__donut{
+  flex-direction: column-reverse;
+  align-items: center;
+  button {
+    margin-bottom: 1rem;
+  }
+}
+
 // .configurator__form .configurator__color--wrapper {
 //   position: absolute;
 //   height: 100%;
@@ -202,6 +210,13 @@
 // }
 
 @media screen and (max-width: 1440px) {
+  .configurator__donut{
+    flex-direction: column-reverse;
+    align-items: center;
+    button {
+      margin-right: 0.5rem;
+    }
+  }
   .details__h1 {
     color: colors.$pink;
   }
