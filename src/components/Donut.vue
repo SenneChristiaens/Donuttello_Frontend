@@ -108,15 +108,27 @@ onMounted(() => {
     };
   });
 
-  camera.position.z = 0.5;
+  // function to change topping
+    const toppings = document.querySelectorAll(".topping__button");
+    toppings.forEach((top) => {
+      top.addEventListener("click", (e) => {
+        if (e.target.value === "sprinkels") {
+          donut.children[2].visible = true;
+          donut.children[3].visible = false;
+          donut.children[4].visible = false;
+        } else if (e.target.value === "marshmallows") {
+          donut.children[2].visible = false;
+          donut.children[3].visible = true;
+          donut.children[4].visible = false;
+        } else if (e.target.value === "chocolade") {
+          donut.children[2].visible = false;
+          donut.children[3].visible = false;
+          donut.children[4].visible = true;
+        }
+      });
+    });
 
-  function animate() {
-    requestAnimationFrame(animate);
-
-    renderer.render(scene, camera);
-  }
-  animate();
-
+  // function to change color of glaze
   const icing = document.querySelectorAll(".glaze__button");
   icing.forEach((ice) => {
     ice.addEventListener("click", (e) => {
@@ -125,11 +137,38 @@ onMounted(() => {
     });
   });
 });
+
+camera.position.z = 0.5;
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  renderer.render(scene, camera);
+}
+animate();
 </script>
 
 <template>
   <div class="configurato__details">
     <h1 class="configurator__h1">Configurator</h1>
+    <h2>Toppings</h2>
+    <button class="topping__button" value="sprinkels">Sprinkels</button>
+    <button class="topping__button" value="marshmallows">Marshmallows</button>
+    <button class="topping__button" value="chocolade">Chocolade</button>
+
+    <h2>Glazuur</h2>
+    <button value="#f174ba" class="glaze__button">lichtroos</button>
+    <button value="#e72870" class="glaze__button">roos</button>
+    <button value="#bb7e52" class="glaze__button">lichtbruin</button>
+    <button value="#673f37" class="glaze__button">bruin</button>
+    <button value="#da9034" class="glaze__button">oranje</button>
+    <button value="#edbf04" class="glaze__button">geel</button>
+    <button value="#7d9a59" class="glaze__button">groen</button>
+    <button value="#bed4c8" class="glaze__button">appelblauwzeegroen</button>
+    <button value="#ffffff" class="glaze__button">wit</button>
+    <button value="#1e0802" class="glaze__button">zwart</button>
+    
+    <h2>Bedrijfslogo</h2>
     <input
       type="file"
       id="company__logo"
@@ -137,15 +176,4 @@ onMounted(() => {
       accept="image/png, image/jpeg, image/jpg"
     />
   </div>
-  <h2>Glazuur</h2>
-  <button value="#f174ba" class="glaze__button">lichtroos</button>
-  <button value="#e72870" class="glaze__button">roos</button>
-  <button value="#bb7e52" class="glaze__button">lichtbruin</button>
-  <button value="#673f37" class="glaze__button">bruin</button>
-  <button value="#da9034" class="glaze__button">oranje</button>
-  <button value="#edbf04" class="glaze__button">geel</button>
-  <button value="#7d9a59" class="glaze__button">groen</button>
-  <button value="#bed4c8" class="glaze__button">appelblauwzeegroen</button>
-  <button value="#ffffff" class="glaze__button">wit</button>
-  <button value="#1e0802" class="glaze__button">zwart</button>
 </template>
