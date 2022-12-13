@@ -31,7 +31,7 @@ onMounted(() => {
     renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
   });
 
-  renderer.setClearColor(0xbed4c8, 1);
+  renderer.setClearColor(0xffffff, 1);
 
   // orbit controls
   const controls = new OrbitControls(camera, renderer.domElement);
