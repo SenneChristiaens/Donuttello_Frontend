@@ -138,16 +138,15 @@ onMounted(() => {
   });
 
   // function to close the suiker menu if the topping is not sprinkels
-    const toppingButtons = document.querySelectorAll(".topping__button");
-    toppingButtons.forEach((top) => {
-      top.addEventListener("click", (e) => {
-        if (e.target.value !== "sprinkels") {
-          document.querySelector(".suiker").style.visibility = "hidden";
-          document.querySelector(".suiker").style.height = "0";
-        }
-      });
+  const toppingButtons = document.querySelectorAll(".topping__button");
+  toppingButtons.forEach((top) => {
+    top.addEventListener("click", (e) => {
+      if (e.target.value !== "sprinkels") {
+        document.querySelector(".suiker").style.visibility = "hidden";
+        document.querySelector(".suiker").style.height = "0";
+      }
     });
-    
+  });
 
   // function to change color of topping sprinkels
   const sprinkels = document.querySelectorAll(".sprinkels__button");
@@ -155,6 +154,18 @@ onMounted(() => {
     sprinkle.addEventListener("click", (e) => {
       donut.children[2].material.color.set(e.target.value);
     });
+  });
+
+  // function to display the companyLogo on the donut with addLogo class without eventlistener
+  const addLogo = document.querySelector(".addLogo");
+  addLogo.addEventListener("click", (e) => {
+    companyCard.visible = true;
+  });
+
+  // function to hide the companyLogo on the donut with removeLogo class without eventlistener
+  const removeLogo = document.querySelector(".removeLogo");
+  removeLogo.addEventListener("click", (e) => {
+    companyCard.visible = false;
   });
 
   // function to change color of glaze
@@ -209,6 +220,8 @@ animate();
     <button value="#1e0802" class="glaze__button">zwart</button>
 
     <h2>Bedrijfslogo</h2>
+    <button class="addLogo">Ja</button>
+    <button class="removeLogo">Nee</button>
     <input
       type="file"
       id="company__logo"
