@@ -116,8 +116,15 @@ onMounted(() => {
     renderer.render(scene, camera);
   }
   animate();
-});
 
+  const icing = document.querySelectorAll(".glaze__button");
+  icing.forEach((ice) => {
+    ice.addEventListener("click", (e) => {
+      donut.children[1].material.color.set(e.target.value);
+      console.log(e.target.value);
+    });
+  });
+});
 </script>
 
 <template>
@@ -130,4 +137,15 @@ onMounted(() => {
       accept="image/png, image/jpeg, image/jpg"
     />
   </div>
+  <h2>Glazuur</h2>
+  <button value="#f174ba" class="glaze__button">lichtroos</button>
+  <button value="#e72870" class="glaze__button">roos</button>
+  <button value="#bb7e52" class="glaze__button">lichtbruin</button>
+  <button value="#673f37" class="glaze__button">bruin</button>
+  <button value="#da9034" class="glaze__button">oranje</button>
+  <button value="#edbf04" class="glaze__button">geel</button>
+  <button value="#7d9a59" class="glaze__button">groen</button>
+  <button value="#bed4c8" class="glaze__button">appelblauwzeegroen</button>
+  <button value="#ffffff" class="glaze__button">wit</button>
+  <button value="#1e0802" class="glaze__button">zwart</button>
 </template>
