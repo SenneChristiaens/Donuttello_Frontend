@@ -31,7 +31,7 @@ onMounted(() => {
     renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
   });
 
-  renderer.setClearColor(0xbed4c8, 1);
+  renderer.setClearColor(0xffffff, 1);
 
   // orbit controls
   const controls = new OrbitControls(camera, renderer.domElement);
@@ -184,17 +184,6 @@ onMounted(() => {
     companyCard.visible = false;
   });
 
-  let glazeColor = null;
-  let topping = null;
-  let toppingColor = null;
-  let donutName = ref("");
-  let company = ref("");
-  let companyLogo = ref("");
-  let email = ref("");
-  let snapshot = ref("");
-  let quantity = ref("");
-  let comment = ref("");
-  // function to change color of glaze
   const icing = document.querySelectorAll(".glaze__button");
   icing.forEach((ice) => {
     ice.addEventListener("click", (e) => {
@@ -204,19 +193,30 @@ onMounted(() => {
     });
   });
 
+  let glazeColor = null;
+  let topping = null;
+  let toppingColor = null;
+  // let donutName = document.querySelector(".donut__name").value;
+  // let company = document.querySelector(".company__name").value;
+  // let companyLogo = document.querySelector(".company__logo").value;
+  // let email = document.querySelector(".email").value;
+  // let snapshot = null;
+  // let quantity = document.querySelector(".quantity").value;
+  // let comment = document.querySelector(".comment").value;
+
   function postDonut() {
     console.log(glazeColor);
     let donut = {
       glazeColor: glazeColor,
       topping: topping,
       toppingColor: toppingColor,
-      donutName: donutName.value,
-      company: company.value,
-      companyLogo: companyLogo.value,
-      email: email.value,
-      snapshot: snapshot.value,
-      quantity: quantity.value,
-      comment: comment.value,
+      // donutName: donutName,
+      // company: company,
+      // companyLogo: companyLogo,
+      // email: email,
+      // snapshot: snapshot,
+      // quantity: quantity,
+      // comment: comment,
     };
     fetch("https://donuttello-backend-5chz.onrender.com/api/v1/donuts/create", {
       method: "POST",
@@ -259,82 +259,26 @@ animate();
 
       <div class="suiker">
         <h2>Sprinkels</h2>
-        <button
-          value="#ff007f"
-          class="sprinkels__button"
-          data-sprinkel-color="0"
-        >
-          rood
-        </button>
-        <button
-          value="#ffffff"
-          class="sprinkels__button"
-          data-sprinkel-color="1"
-        >
-          wit
-        </button>
-        <button
-          value="#7d9a59"
-          class="sprinkels__button"
-          data-sprinkel-color="2"
-        >
-          groen
-        </button>
-        <button
-          value="#edbf04"
-          class="sprinkels__button"
-          data-sprinkel-color="3"
-        >
-          geel
-        </button>
-        <button
-          value="#673f37"
-          class="sprinkels__button"
-          data-sprinkel-color="4"
-        >
-          bruin
-        </button>
-        <button
-          value="#58a2e9"
-          class="sprinkels__button"
-          data-sprinkel-color="5"
-        >
-          blauw
-        </button>
-        <button
-          value="#800080"
-          class="sprinkels__button"
-          data-sprinkel-color="6"
-        >
-          paars
-        </button>
+        <button value="#ff007f" class="sprinkels__button">rood</button>
+        <button value="#ffffff" class="sprinkels__button">wit</button>
+        <button value="#7d9a59" class="sprinkels__button">groen</button>
+        <button value="#edbf04" class="sprinkels__button">geel</button>
+        <button value="#673f37" class="sprinkels__button">bruin</button>
+        <button value="#58a2e9" class="sprinkels__button">blauw</button>
+        <button value="#800080" class="sprinkels__button">paars</button>
       </div>
 
       <h2>Glazuur</h2>
-      <button value="#f174ba" class="glaze__button" data-glaze="0">
-        lichtroos
-      </button>
-      <button value="#e72870" class="glaze__button" data-glaze="1">roos</button>
-      <button value="#bb7e52" class="glaze__button" data-glaze="2">
-        lichtbruin
-      </button>
-      <button value="#673f37" class="glaze__button" data-glaze="3">
-        bruin
-      </button>
-      <button value="#da9034" class="glaze__button" data-glaze="4">
-        oranje
-      </button>
-      <button value="#edbf04" class="glaze__button" data-glaze="5">geel</button>
-      <button value="#7d9a59" class="glaze__button" data-glaze="6">
-        groen
-      </button>
-      <button value="#bed4c8" class="glaze__button" data-glaze="7">
-        appelblauwzeegroen
-      </button>
-      <button value="#ffffff" class="glaze__button" data-glaze="8">wit</button>
-      <button value="#1e0802" class="glaze__button" data-glaze="9">
-        zwart
-      </button>
+      <button value="#f174ba" class="glaze__button">lichtroos</button>
+      <button value="#e72870" class="glaze__button">roos</button>
+      <button value="#bb7e52" class="glaze__button">lichtbruin</button>
+      <button value="#673f37" class="glaze__button">bruin</button>
+      <button value="#da9034" class="glaze__button">oranje</button>
+      <button value="#edbf04" class="glaze__button">geel</button>
+      <button value="#7d9a59" class="glaze__button">groen</button>
+      <button value="#bed4c8" class="glaze__button">appelblauwzeegroen</button>
+      <button value="#ffffff" class="glaze__button">wit</button>
+      <button value="#1e0802" class="glaze__button">zwart</button>
 
       <h2>Bedrijfslogo</h2>
       <button class="addLogo">Ja</button>
@@ -399,3 +343,17 @@ animate();
     </form>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      donutName: "",
+      company: "",
+      email: "",
+      quantity: "",
+      comment: "",
+    };
+  },
+};
+</script>
