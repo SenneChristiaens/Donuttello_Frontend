@@ -15,6 +15,10 @@ const camera = new THREE.PerspectiveCamera(
 
 const renderer = new THREE.WebGLRenderer();
 onMounted(() => {
+  document.querySelector(".hero__btn").addEventListener("click", () => {
+    postDonut();
+  });
+
   renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
   document
     .querySelector(".configurator__donut")
@@ -133,6 +137,8 @@ onMounted(() => {
         donut.children[3].visible = false;
         donut.children[4].visible = true;
       }
+      topping = e.target.value;
+      console.log(topping);
     });
   });
 
@@ -161,6 +167,8 @@ onMounted(() => {
   toppingSprinkels.forEach((sprinkle) => {
     sprinkle.addEventListener("click", (e) => {
       donut.children[2].material.color.set(e.target.value);
+      toppingColor = e.target.value;
+      console.log(toppingColor);
     });
   });
 
@@ -176,30 +184,32 @@ onMounted(() => {
     companyCard.visible = false;
   });
 
+  let glazeColor = null;
+  let topping = null;
+  let toppingColor = null;
+  let donutName = ref("");
+  let company = ref("");
+  let companyLogo = ref("");
+  let email = ref("");
+  let snapshot = ref("");
+  let quantity = ref("");
+  let comment = ref("");
   // function to change color of glaze
   const icing = document.querySelectorAll(".glaze__button");
   icing.forEach((ice) => {
     ice.addEventListener("click", (e) => {
       donut.children[1].material.color.set(e.target.value);
       console.log(e.target.value);
+      glazeColor = e.target.value;
     });
   });
 
   function postDonut() {
-    let glazeColor = document.querySelector(".glaze__button").value;
-    let topping = document.querySelector(".topping__button").value;
-    let sprinkelsColor = document.querySelector(".sprinkels__button").value;
-    let donutName = ref("");
-    let company = ref("");
-    let companyLogo = ref("");
-    let email = ref("");
-    let snapshot = ref("");
-    let quantity = ref("");
-    let comment = ref("");
+    console.log(glazeColor);
     let donut = {
       glazeColor: glazeColor,
       topping: topping,
-      sprinkelsColor: sprinkelsColor,
+      toppingColor: toppingColor,
       donutName: donutName.value,
       company: company.value,
       companyLogo: companyLogo.value,
@@ -237,32 +247,94 @@ animate();
     <div class="configurator__details">
       <h1 class="configurator__h1">Configurator</h1>
       <h2>Toppings</h2>
-      <button class="topping__button" value="sprinkels">Sprinkels</button>
-      <button class="topping__button" value="marshmallows">Marshmallows</button>
-      <button class="topping__button" value="chocolade">Chocolade</button>
+      <button class="topping__button" value="sprinkels" data-sprinkel="0">
+        Sprinkels
+      </button>
+      <button class="topping__button" value="marshmallows" data-sprinkel="1">
+        Marshmallows
+      </button>
+      <button class="topping__button" value="chocolade" data-sprinkel="2">
+        Chocolade
+      </button>
 
       <div class="suiker">
         <h2>Sprinkels</h2>
-        <button value="#ff007f" class="sprinkels__button">rood</button>
-        <button value="#ffffff" class="sprinkels__button">wit</button>
-        <button value="#7d9a59" class="sprinkels__button">groen</button>
-        <button value="#edbf04" class="sprinkels__button">geel</button>
-        <button value="#673f37" class="sprinkels__button">bruin</button>
-        <button value="#58a2e9" class="sprinkels__button">blauw</button>
-        <button value="#800080" class="sprinkels__button">paars</button>
+        <button
+          value="#ff007f"
+          class="sprinkels__button"
+          data-sprinkel-color="0"
+        >
+          rood
+        </button>
+        <button
+          value="#ffffff"
+          class="sprinkels__button"
+          data-sprinkel-color="1"
+        >
+          wit
+        </button>
+        <button
+          value="#7d9a59"
+          class="sprinkels__button"
+          data-sprinkel-color="2"
+        >
+          groen
+        </button>
+        <button
+          value="#edbf04"
+          class="sprinkels__button"
+          data-sprinkel-color="3"
+        >
+          geel
+        </button>
+        <button
+          value="#673f37"
+          class="sprinkels__button"
+          data-sprinkel-color="4"
+        >
+          bruin
+        </button>
+        <button
+          value="#58a2e9"
+          class="sprinkels__button"
+          data-sprinkel-color="5"
+        >
+          blauw
+        </button>
+        <button
+          value="#800080"
+          class="sprinkels__button"
+          data-sprinkel-color="6"
+        >
+          paars
+        </button>
       </div>
 
       <h2>Glazuur</h2>
-      <button value="#f174ba" class="glaze__button">lichtroos</button>
-      <button value="#e72870" class="glaze__button">roos</button>
-      <button value="#bb7e52" class="glaze__button">lichtbruin</button>
-      <button value="#673f37" class="glaze__button">bruin</button>
-      <button value="#da9034" class="glaze__button">oranje</button>
-      <button value="#edbf04" class="glaze__button">geel</button>
-      <button value="#7d9a59" class="glaze__button">groen</button>
-      <button value="#bed4c8" class="glaze__button">appelblauwzeegroen</button>
-      <button value="#ffffff" class="glaze__button">wit</button>
-      <button value="#1e0802" class="glaze__button">zwart</button>
+      <button value="#f174ba" class="glaze__button" data-glaze="0">
+        lichtroos
+      </button>
+      <button value="#e72870" class="glaze__button" data-glaze="1">roos</button>
+      <button value="#bb7e52" class="glaze__button" data-glaze="2">
+        lichtbruin
+      </button>
+      <button value="#673f37" class="glaze__button" data-glaze="3">
+        bruin
+      </button>
+      <button value="#da9034" class="glaze__button" data-glaze="4">
+        oranje
+      </button>
+      <button value="#edbf04" class="glaze__button" data-glaze="5">geel</button>
+      <button value="#7d9a59" class="glaze__button" data-glaze="6">
+        groen
+      </button>
+      <button value="#bed4c8" class="glaze__button" data-glaze="7">
+        appelblauwzeegroen
+      </button>
+      <button value="#ffffff" class="glaze__button" data-glaze="8">wit</button>
+      <button value="#1e0802" class="glaze__button" data-glaze="9">
+        zwart
+      </button>
 
       <h2>Bedrijfslogo</h2>
       <button class="addLogo">Ja</button>
