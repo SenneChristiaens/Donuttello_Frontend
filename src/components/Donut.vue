@@ -109,24 +109,53 @@ onMounted(() => {
   });
 
   // function to change topping
-    const toppings = document.querySelectorAll(".topping__button");
-    toppings.forEach((top) => {
+  const toppings = document.querySelectorAll(".topping__button");
+  toppings.forEach((top) => {
+    top.addEventListener("click", (e) => {
+      if (e.target.value === "sprinkels") {
+        donut.children[2].visible = true;
+        donut.children[3].visible = false;
+        donut.children[4].visible = false;
+      } else if (e.target.value === "marshmallows") {
+        donut.children[2].visible = false;
+        donut.children[3].visible = true;
+        donut.children[4].visible = false;
+      } else if (e.target.value === "chocolade") {
+        donut.children[2].visible = false;
+        donut.children[3].visible = false;
+        donut.children[4].visible = true;
+      }
+    });
+  });
+
+  // function to check if sprinkels are visible and open div suiker
+  const sprinkelsButton = document.querySelector(".topping__button");
+  sprinkelsButton.addEventListener("click", (e) => {
+    if (donut.children[2].visible === true) {
+      document.querySelector(".suiker").style.visibility = "visible";
+      document.querySelector(".suiker").style.height = "auto";
+    }
+  });
+
+  // function to close the suiker menu if the topping is not sprinkels
+    const toppingButtons = document.querySelectorAll(".topping__button");
+    toppingButtons.forEach((top) => {
       top.addEventListener("click", (e) => {
-        if (e.target.value === "sprinkels") {
-          donut.children[2].visible = true;
-          donut.children[3].visible = false;
-          donut.children[4].visible = false;
-        } else if (e.target.value === "marshmallows") {
-          donut.children[2].visible = false;
-          donut.children[3].visible = true;
-          donut.children[4].visible = false;
-        } else if (e.target.value === "chocolade") {
-          donut.children[2].visible = false;
-          donut.children[3].visible = false;
-          donut.children[4].visible = true;
+        if (e.target.value !== "sprinkels") {
+          document.querySelector(".suiker").style.visibility = "hidden";
+          document.querySelector(".suiker").style.height = "0";
         }
       });
     });
+    
+
+  // function to change color of topping sprinkels
+  const sprinkels = document.querySelectorAll(".sprinkels__button");
+  sprinkels.forEach((sprinkle) => {
+    sprinkle.addEventListener("click", (e) => {
+      donut.children[2].material.color.set(e.target.value);
+    });
+  });
 
   // function to change color of glaze
   const icing = document.querySelectorAll(".glaze__button");
@@ -156,6 +185,17 @@ animate();
     <button class="topping__button" value="marshmallows">Marshmallows</button>
     <button class="topping__button" value="chocolade">Chocolade</button>
 
+    <div class="suiker">
+      <h2>Sprinkels</h2>
+      <button value="#ff007f" class="sprinkels__button">rood</button>
+      <button value="#ffffff" class="sprinkels__button">wit</button>
+      <button value="#7d9a59" class="sprinkels__button">groen</button>
+      <button value="#edbf04" class="sprinkels__button">geel</button>
+      <button value="#673f37" class="sprinkels__button">bruin</button>
+      <button value="#58a2e9" class="sprinkels__button">blauw</button>
+      <button value="#800080" class="sprinkels__button">paars</button>
+    </div>
+
     <h2>Glazuur</h2>
     <button value="#f174ba" class="glaze__button">lichtroos</button>
     <button value="#e72870" class="glaze__button">roos</button>
@@ -167,7 +207,7 @@ animate();
     <button value="#bed4c8" class="glaze__button">appelblauwzeegroen</button>
     <button value="#ffffff" class="glaze__button">wit</button>
     <button value="#1e0802" class="glaze__button">zwart</button>
-    
+
     <h2>Bedrijfslogo</h2>
     <input
       type="file"
