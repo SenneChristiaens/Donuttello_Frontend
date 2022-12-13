@@ -69,6 +69,14 @@ onMounted(() => {
       donut.children[4].visible = false;
 
       console.log(children);
+
+      //   let dough = children[0];
+      //   let glazeColor = children[1].material.color;
+      //   let sprinkels = children[2];
+      //   let sprinkelsColor = children[2].material.color;
+      //   let marshmallows = children[3];
+      //   let chocolate = children[4];
+
       scene.add(donut);
     },
     undefined,
@@ -88,8 +96,8 @@ onMounted(() => {
   scene.add(companyCard);
 
   // add the logo to the donut companyCard
-  const companyLogo = document.getElementById("company__logo");
-  companyLogo.addEventListener("change", (e) => {
+  const branding = document.getElementById("company__logo");
+  branding.addEventListener("change", (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -149,20 +157,20 @@ onMounted(() => {
   });
 
   // function to change color of topping sprinkels
-  const sprinkels = document.querySelectorAll(".sprinkels__button");
-  sprinkels.forEach((sprinkle) => {
+  const toppingSprinkels = document.querySelectorAll(".sprinkels__button");
+  toppingSprinkels.forEach((sprinkle) => {
     sprinkle.addEventListener("click", (e) => {
       donut.children[2].material.color.set(e.target.value);
     });
   });
 
-  // function to display the companyLogo on the donut with addLogo class without eventlistener
+  // function to display the branding on the donut with addLogo class without eventlistener
   const addLogo = document.querySelector(".addLogo");
   addLogo.addEventListener("click", (e) => {
     companyCard.visible = true;
   });
 
-  // function to hide the companyLogo on the donut with removeLogo class without eventlistener
+  // function to hide the branding on the donut with removeLogo class without eventlistener
   const removeLogo = document.querySelector(".removeLogo");
   removeLogo.addEventListener("click", (e) => {
     companyCard.visible = false;
@@ -176,6 +184,42 @@ onMounted(() => {
       console.log(e.target.value);
     });
   });
+
+  function postDonut() {
+    let glazeColor = document.querySelector(".glaze__button").value;
+    let topping = document.querySelector(".topping__button").value;
+    let sprinkelsColor = document.querySelector(".sprinkels__button").value;
+    let donutName = ref("");
+    let company = ref("");
+    let companyLogo = ref("");
+    let email = ref("");
+    let snapshot = ref("");
+    let quantity = ref("");
+    let comment = ref("");
+    let donut = {
+      glazeColor: glazeColor,
+      topping: topping,
+      sprinkelsColor: sprinkelsColor,
+      donutName: donutName.value,
+      company: company.value,
+      companyLogo: companyLogo.value,
+      email: email.value,
+      snapshot: snapshot.value,
+      quantity: quantity.value,
+      comment: comment.value,
+    };
+    fetch("https://donuttello-backend-5chz.onrender.com/api/v1/donuts/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(donut),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }
 });
 
 camera.position.z = 0.5;
@@ -189,44 +233,97 @@ animate();
 </script>
 
 <template>
-  <div class="configurato__details">
-    <h1 class="configurator__h1">Configurator</h1>
-    <h2>Toppings</h2>
-    <button class="topping__button" value="sprinkels">Sprinkels</button>
-    <button class="topping__button" value="marshmallows">Marshmallows</button>
-    <button class="topping__button" value="chocolade">Chocolade</button>
+  <div>
+    <div class="configurator__details">
+      <h1 class="configurator__h1">Configurator</h1>
+      <h2>Toppings</h2>
+      <button class="topping__button" value="sprinkels">Sprinkels</button>
+      <button class="topping__button" value="marshmallows">Marshmallows</button>
+      <button class="topping__button" value="chocolade">Chocolade</button>
 
-    <div class="suiker">
-      <h2>Sprinkels</h2>
-      <button value="#ff007f" class="sprinkels__button">rood</button>
-      <button value="#ffffff" class="sprinkels__button">wit</button>
-      <button value="#7d9a59" class="sprinkels__button">groen</button>
-      <button value="#edbf04" class="sprinkels__button">geel</button>
-      <button value="#673f37" class="sprinkels__button">bruin</button>
-      <button value="#58a2e9" class="sprinkels__button">blauw</button>
-      <button value="#800080" class="sprinkels__button">paars</button>
+      <div class="suiker">
+        <h2>Sprinkels</h2>
+        <button value="#ff007f" class="sprinkels__button">rood</button>
+        <button value="#ffffff" class="sprinkels__button">wit</button>
+        <button value="#7d9a59" class="sprinkels__button">groen</button>
+        <button value="#edbf04" class="sprinkels__button">geel</button>
+        <button value="#673f37" class="sprinkels__button">bruin</button>
+        <button value="#58a2e9" class="sprinkels__button">blauw</button>
+        <button value="#800080" class="sprinkels__button">paars</button>
+      </div>
+
+      <h2>Glazuur</h2>
+      <button value="#f174ba" class="glaze__button">lichtroos</button>
+      <button value="#e72870" class="glaze__button">roos</button>
+      <button value="#bb7e52" class="glaze__button">lichtbruin</button>
+      <button value="#673f37" class="glaze__button">bruin</button>
+      <button value="#da9034" class="glaze__button">oranje</button>
+      <button value="#edbf04" class="glaze__button">geel</button>
+      <button value="#7d9a59" class="glaze__button">groen</button>
+      <button value="#bed4c8" class="glaze__button">appelblauwzeegroen</button>
+      <button value="#ffffff" class="glaze__button">wit</button>
+      <button value="#1e0802" class="glaze__button">zwart</button>
+
+      <h2>Bedrijfslogo</h2>
+      <button class="addLogo">Ja</button>
+      <button class="removeLogo">Nee</button>
+      <input
+        type="file"
+        id="company__logo"
+        name="logo"
+        accept="image/png, image/jpeg, image/jpg"
+      />
     </div>
+    <form class="configurator__info" @submit.prevent="postDonut">
+      <div class="configurator__formulier">
+        <h1 class="details__h1">Details</h1>
+        <div class="configurator__form">
+          <input v-model="donutName" type="text" name="donutName" required />
+          <label for="donutName" class="configurator__label--wrapper">
+            <span class="configurator__text">Naam Donut</span>
+          </label>
+        </div>
 
-    <h2>Glazuur</h2>
-    <button value="#f174ba" class="glaze__button">lichtroos</button>
-    <button value="#e72870" class="glaze__button">roos</button>
-    <button value="#bb7e52" class="glaze__button">lichtbruin</button>
-    <button value="#673f37" class="glaze__button">bruin</button>
-    <button value="#da9034" class="glaze__button">oranje</button>
-    <button value="#edbf04" class="glaze__button">geel</button>
-    <button value="#7d9a59" class="glaze__button">groen</button>
-    <button value="#bed4c8" class="glaze__button">appelblauwzeegroen</button>
-    <button value="#ffffff" class="glaze__button">wit</button>
-    <button value="#1e0802" class="glaze__button">zwart</button>
-
-    <h2>Bedrijfslogo</h2>
-    <button class="addLogo">Ja</button>
-    <button class="removeLogo">Nee</button>
-    <input
-      type="file"
-      id="company__logo"
-      name="logo"
-      accept="image/png, image/jpeg, image/jpg"
-    />
+        <div class="configurator__form">
+          <input v-model="company" type="text" name="company" required />
+          <label for="company" class="configurator__label--wrapper">
+            <span class="configurator__text">Naam Bedrijf</span>
+          </label>
+        </div>
+        <div class="configurator__form">
+          <input
+            v-model="email"
+            type="email"
+            name="email"
+            autocomplete="on"
+            required
+          />
+          <label for="email" class="configurator__label--wrapper">
+            <span class="configurator__text">Email</span>
+          </label>
+        </div>
+        <div class="configurator__form">
+          <input
+            v-model="quantity"
+            type="number"
+            name="quantity"
+            autocomplete="on"
+            required
+          />
+          <label for="quantity" class="configurator__label--wrapper">
+            <span class="configurator__text">Aantal Donuts</span>
+          </label>
+        </div>
+        <div class="configurator__form">
+          <input v-model="comment" type="text" name="comment" required />
+          <label for="comment" class="configurator__label--wrapper">
+            <span class="configurator__text">Opmerkingen</span>
+          </label>
+        </div>
+        <div class="configurator__button">
+          <button type="submit" class="hero__btn">Verstuur je donut!</button>
+        </div>
+      </div>
+    </form>
   </div>
 </template>

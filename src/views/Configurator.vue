@@ -1,7 +1,7 @@
 <script setup>
 import Footerello from "../components/Footerello.vue";
 import Navigation from "../components/Navigation.vue";
-import Three from "../components/Three.vue";
+import Donut from "../components/Donut.vue";
 
 </script>
 
@@ -15,8 +15,8 @@ import Three from "../components/Three.vue";
       </label>
     </div> -->
 
-    <div class="configurator__glaze">
-      <Three />
+    <div class="configurator__donut">
+      <Donut />
     </div>
   </main>
   <Footerello />
