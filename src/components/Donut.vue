@@ -214,6 +214,7 @@ onMounted(() => {
     fetch("https://donuttello-backend-5chz.onrender.com/api/v1/donuts/create", {
       method: "POST",
       headers: {
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(donut),
