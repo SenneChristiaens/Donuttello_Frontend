@@ -55,14 +55,6 @@ onMounted(() => {
       donut.scale.set(5, 5, 5);
       donut.position.set(0, 0, 0);
       gltf.scene.rotation.x = Math.PI * -0.2;
-      const material = new THREE.MeshStandardMaterial({
-        color: 0x000000,
-        flatShading: true,
-        depthWrite: false,
-        blending: THREE.MixOperation,
-        transparent: true,
-        alphaTest: 0.5,
-      });
       //get the children
       const children = donut.children;
 
@@ -192,31 +184,32 @@ onMounted(() => {
       glazeColor = e.target.value;
     });
   });
-
   let glazeColor = null;
   let topping = null;
   let toppingColor = null;
-  // let donutName = document.querySelector(".donut__name").value;
-  // let company = document.querySelector(".company__name").value;
-  // let companyLogo = document.querySelector(".company__logo").value;
-  // let email = document.querySelector(".email").value;
-  // let snapshot = null;
-  // let quantity = document.querySelector(".quantity").value;
-  // let comment = document.querySelector(".comment").value;
-
+  let donutName = document.querySelector("#donutName").value;
+  let company = document.querySelector("#company").value;
+  let companyLogo = document.querySelector("#company__logo").value;
+  let email = document.querySelector("#email").value;
+  let snapshot = null;
+  let quantity = document.querySelector("#quantity").value;
+  let comment = document.querySelector("#comment").value;
+  
   function postDonut() {
-    console.log(glazeColor);
+    renderer.render(scene, camera);
+    snapshot = renderer.domElement.toDataURL('image/jpeg', 1.0);
+    console.log(snapshot);
     let donut = {
       glazeColor: glazeColor,
       topping: topping,
       toppingColor: toppingColor,
-      // donutName: donutName,
-      // company: company,
-      // companyLogo: companyLogo,
-      // email: email,
-      // snapshot: snapshot,
-      // quantity: quantity,
-      // comment: comment,
+      donutName: donutName,
+      company: company,
+      companyLogo: companyLogo,
+      email: email,
+      snapshot: snapshot,
+      quantity: quantity,
+      comment: comment,
     };
     fetch("https://donuttello-backend-5chz.onrender.com/api/v1/donuts/create", {
       method: "POST",
@@ -294,14 +287,26 @@ animate();
       <div class="configurator__formulier">
         <h1 class="details__h1">Details</h1>
         <div class="configurator__form">
-          <input v-model="donutName" type="text" name="donutName" required />
+          <input
+            v-model="donutName"
+            type="text"
+            id="donutName"
+            name="donutName"
+            required
+          />
           <label for="donutName" class="configurator__label--wrapper">
             <span class="configurator__text">Naam Donut</span>
           </label>
         </div>
 
         <div class="configurator__form">
-          <input v-model="company" type="text" name="company" required />
+          <input
+            v-model="company"
+            type="text"
+            id="company"
+            name="company"
+            required
+          />
           <label for="company" class="configurator__label--wrapper">
             <span class="configurator__text">Naam Bedrijf</span>
           </label>
@@ -314,12 +319,13 @@ animate();
             autocomplete="on"
             required
           />
-          <label for="email" class="configurator__label--wrapper">
+          <label for="email" id="email" class="configurator__label--wrapper">
             <span class="configurator__text">Email</span>
           </label>
         </div>
         <div class="configurator__form">
           <input
+            id="quantity"
             v-model="quantity"
             type="number"
             name="quantity"
@@ -331,7 +337,13 @@ animate();
           </label>
         </div>
         <div class="configurator__form">
-          <input v-model="comment" type="text" name="comment" required />
+          <input
+            v-model="comment"
+            type="text"
+            id="comment"
+            name="comment"
+            required
+          />
           <label for="comment" class="configurator__label--wrapper">
             <span class="configurator__text">Opmerkingen</span>
           </label>
