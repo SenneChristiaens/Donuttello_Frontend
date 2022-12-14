@@ -140,6 +140,7 @@ function deleteDonut(donutId) {
         <p class="gallery__date">
           Gemaakt op {{ moment(donut.date).format("DD MMMM YYYY") }}
         </p>
+        <p class="gallery__quantity"> {{ donut.quantity }} </p>
         <p class="gallery__status">Status: {{ donut.status }}</p>
         <div class="button--status">
           <button

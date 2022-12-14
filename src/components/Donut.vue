@@ -189,10 +189,10 @@ onMounted(() => {
   let snapshot = null;
   let quantity = document.querySelector("#quantity").value;
   let comment = document.querySelector("#comment").value;
-  
+
   function postDonut() {
     renderer.render(scene, camera);
-    snapshot = renderer.domElement.toDataURL('image/jpeg', 1.0);
+    snapshot = renderer.domElement.toDataURL("image/jpeg", 1.0);
     let donut = {
       glazeColor: glazeColor,
       topping: topping,
@@ -362,5 +362,28 @@ export default {
       comment: "",
     };
   },
+  methods: {
+    postDonut() {
+      const donut = {
+        donutName: this.donutName,
+        company: this.company,
+        email: this.email,
+        quantity: this.quantity,
+        comment: this.comment,
+      };
+      fetch("https://donuttello-backend-5chz.onrender.com/api/v1/donuts/create", {
+        method: "POST",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(donut),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+    },
+  }
 };
 </script>
