@@ -64,8 +64,6 @@ onMounted(() => {
       donut.children[1].material.color.set(0xffffff);
       donut.children[4].visible = false;
 
-      console.log(children);
-
       //   let dough = children[0];
       //   let glazeColor = children[1].material.color;
       //   let sprinkels = children[2];
@@ -130,7 +128,6 @@ onMounted(() => {
         donut.children[4].visible = true;
       }
       topping = e.target.value;
-      console.log(topping);
     });
   });
 
@@ -160,7 +157,6 @@ onMounted(() => {
     sprinkle.addEventListener("click", (e) => {
       donut.children[2].material.color.set(e.target.value);
       toppingColor = e.target.value;
-      console.log(toppingColor);
     });
   });
 
@@ -180,7 +176,6 @@ onMounted(() => {
   icing.forEach((ice) => {
     ice.addEventListener("click", (e) => {
       donut.children[1].material.color.set(e.target.value);
-      console.log(e.target.value);
       glazeColor = e.target.value;
     });
   });
@@ -198,7 +193,6 @@ onMounted(() => {
   function postDonut() {
     renderer.render(scene, camera);
     snapshot = renderer.domElement.toDataURL('image/jpeg', 1.0);
-    console.log(snapshot);
     let donut = {
       glazeColor: glazeColor,
       topping: topping,
