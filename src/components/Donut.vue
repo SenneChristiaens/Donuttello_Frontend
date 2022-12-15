@@ -208,7 +208,7 @@ onMounted(() => {
     fetch("https://donuttello-backend-5chz.onrender.com/api/v1/donuts/create", {
       method: "POST",
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        "Allow-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(donut),
@@ -216,6 +216,7 @@ onMounted(() => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        localStorage.setItem("donutId", data.data.donut._id);
       });
   }
 });
@@ -278,7 +279,7 @@ animate();
         accept="image/png, image/jpeg, image/jpg"
       />
     </div>
-    <form class="configurator__info" @submit.prevent="postDonut">
+    <form class="configurator__info" @submit="postDonut, updateDetails()">
       <div class="configurator__formulier">
         <h1 class="details__h1">Details</h1>
         <div class="configurator__form">
@@ -363,7 +364,9 @@ export default {
     };
   },
   methods: {
-    postDonut() {
+    updateDetails() {
+      const id = localStorage.getItem("donutId");
+      console.log(id);
       const donut = {
         donutName: this.donutName,
         company: this.company,
@@ -371,8 +374,8 @@ export default {
         quantity: this.quantity,
         comment: this.comment,
       };
-      fetch("https://donuttello-backend-5chz.onrender.com/api/v1/donuts/create", {
-        method: "POST",
+      fetch(`https://donuttello-backend-5chz.onrender.com/api/v1/donuts/${id}`, {
+        method: "PUT",
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
@@ -384,6 +387,6 @@ export default {
           console.log(data);
         });
     },
-  }
+  },
 };
 </script>
