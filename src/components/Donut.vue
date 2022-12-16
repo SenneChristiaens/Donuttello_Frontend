@@ -279,7 +279,7 @@ animate();
         accept="image/png, image/jpeg, image/jpg"
       />
     </div>
-    <form class="configurator__info" @submit="postDonut, updateDetails()">
+    <form class="configurator__info" @submit.prevent="postDonut, updateDetails()">
       <div class="configurator__formulier">
         <h1 class="details__h1">Details</h1>
         <div class="configurator__form">
