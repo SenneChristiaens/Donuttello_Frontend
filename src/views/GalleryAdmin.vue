@@ -98,6 +98,10 @@ function changeStatus(id, status) {
 }
 
 function deleteDonut(donutId) {
+  let deleteDonut = confirm("Weet je zeker dat je deze donut wilt verwijderen?");
+  if (!deleteDonut) {
+    return;
+  }
   let apiUrl = `https://donuttello-backend-5chz.onrender.com/api/v1/donuts/${donutId}`;
   console.log(donutId);
   fetch(apiUrl, {
