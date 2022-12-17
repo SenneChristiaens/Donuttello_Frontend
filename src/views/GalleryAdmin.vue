@@ -135,7 +135,7 @@ function deleteDonut(donutId) {
 
   <div class="gallery">
     <div class="gallery__item" v-for="donut in donuts.donuts" :key="donut.id">
-      <router-link to="/details">
+      <router-link :to="'/details/' + donut._id">
         <img class="gallery__image" :src="donut.snapshot" alt="donut" />
       </router-link>
       <div class="gallery__info">

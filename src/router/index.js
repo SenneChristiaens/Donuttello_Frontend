@@ -29,7 +29,7 @@ const router = createRouter({
       component: () => import("../views/ChangePassword.vue"),
     },
     {
-      path: "/details",
+      path: "/details/:id",
       name: "Details",
       component: () => import("../views/Details.vue"),
     }
