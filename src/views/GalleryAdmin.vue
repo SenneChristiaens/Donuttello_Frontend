@@ -148,7 +148,8 @@ function deleteDonut(donutId) {
         </p>
         <p class="gallery__quantity">Aantal: {{ donut.quantity }}</p>
         <p class="gallery__status">Status: {{ donut.status }}</p>
- <div class="button--status">
+        <h3 class="gallery__status--black">Status wijzigen naar:</h3>
+        <div class="button--status">
           <button
             class="button--hero"
             v-on:click="
