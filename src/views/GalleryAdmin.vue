@@ -149,20 +149,6 @@ function deleteDonut(donutId) {
         <p class="gallery__quantity">Aantal: {{ donut.quantity }}</p>
         <p class="gallery__status">Live Status: {{ donut.status }}</p>
         <div class="button--status">
-          <!-- <button
-            class="button--hero"
-            v-on:click="
-              changeStatus(donut._id, 'Bestelling wordt klaargemaakt')
-            "
-          >
-            Bestelling wordt klaargemaakt
-          </button>
-          <button
-            class="button--hero"
-            v-on:click="changeStatus(donut._id, 'Bestelling is klaar')"
-          >
-            Bestelling is klaar
-          </button> -->
           <label for="cars">Verander status:</label>
           <select>
             <optgroup label="Verander Status">
