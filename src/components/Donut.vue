@@ -34,7 +34,7 @@ onMounted(() => {
   renderer.setClearColor(0xffffff, 1);
 
   // orbit controls
-  const controls = new OrbitControls(camera, renderer.domElement);
+  // const controls = new OrbitControls(camera, renderer.domElement);
 
   // ambient light
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
