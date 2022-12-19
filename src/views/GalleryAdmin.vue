@@ -98,7 +98,9 @@ function changeStatus(id, status) {
 }
 
 function deleteDonut(donutId) {
-  let deleteDonut = confirm("Weet je zeker dat je deze donut wilt verwijderen?");
+  let deleteDonut = confirm(
+    "Weet je zeker dat je deze donut wilt verwijderen?"
+  );
   if (!deleteDonut) {
     return;
   }
@@ -144,10 +146,10 @@ function deleteDonut(donutId) {
         <p class="gallery__date">
           Gemaakt op {{ moment(donut.date).format("DD MMMM YYYY") }}
         </p>
-        <p class="gallery__quantity">Aantal: {{ donut.quantity }} </p>
-        <p class="gallery__status">Status: {{ donut.status }}</p>
+        <p class="gallery__quantity">Aantal: {{ donut.quantity }}</p>
+        <p class="gallery__status">Live Status: {{ donut.status }}</p>
         <div class="button--status">
-          <button
+          <!-- <button
             class="button--hero"
             v-on:click="
               changeStatus(donut._id, 'Bestelling wordt klaargemaakt')
@@ -160,7 +162,14 @@ function deleteDonut(donutId) {
             v-on:click="changeStatus(donut._id, 'Bestelling is klaar')"
           >
             Bestelling is klaar
-          </button>
+          </button> -->
+          <label for="cars">Verander status:</label>
+          <select>
+            <optgroup label="Verander Status">
+              <option v-on:click="changeStatus(donut._id, 'Bestelling wordt klaargemaakt')">Bestelling wordt klaargemaakt</option>
+              <option v-on:click="changeStatus(donut._id, 'Bestelling is klaar')">Bestelling is klaar</option>
+            </optgroup>
+          </select>
         </div>
         <button
           class="button--delete"
