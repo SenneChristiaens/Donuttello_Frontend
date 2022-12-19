@@ -8,7 +8,7 @@ import Donut from "../components/Donut.vue";
 <template>
   <Navigation />
   <main class="configurator__main">
-    <!-- <div class="configurator__form">
+    <!-- <div class="configurator__m">
       <input type="color" name="color-glaze" value="#82d1e4" id="configurator__colorpicker" />
       <label for="color-glaze" class="configurator__color--wrapper">
         <span class="configurator__text">Kleur Glazuur</span>
