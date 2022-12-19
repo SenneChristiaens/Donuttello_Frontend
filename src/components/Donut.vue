@@ -223,6 +223,12 @@ onMounted(() => {
 
 camera.position.z = 0.5;
 
+if (window.innerWidth < 600) {
+  camera.position.z = 0.75;
+} else {
+  camera.position.z = 0.5;
+}
+
 function animate() {
   requestAnimationFrame(animate);
 
