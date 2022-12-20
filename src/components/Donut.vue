@@ -18,23 +18,6 @@ onMounted(() => {
     postDonut();
   });
 
-  let companyUrl;
-
-  const createUrl = () => {
-    let companyLogo = document.querySelector("#company__logo").files[0];
-    let formData = new FormData();
-    formData.append("file", companyLogo);
-    formData.append("upload_preset", "q3oewktc");
-    fetch("https://api.cloudinary.com/v1_1/dziauhfdm/image/upload", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        companyUrl = data.secure_url;
-      });
-  };
-  
   renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
   document
     .querySelector(".configurator__donut")
@@ -209,37 +192,59 @@ onMounted(() => {
   let snapshot = null;
   let quantity = document.querySelector("#quantity").value;
   let comment = document.querySelector("#comment").value;
-
+  let companyUrl = null;
+  
+  const createUrl = () => {
+    let companyLogo = document.querySelector("#company__logo").files[0];
+    let formData = new FormData();
+    formData.append("file", companyLogo);
+    formData.append("upload_preset", "q3oewktc");
+    fetch("https://api.cloudinary.com/v1_1/dziauhfdm/image/upload", {
+      method: "POST",
+      body: formData,
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      companyUrl = data.secure_url;
+      console.log(companyUrl);
+    });
+  };
+  
+  
   function postDonut() {
     createUrl();
-
-    renderer.render(scene, camera);
-    snapshot = renderer.domElement.toDataURL("image/jpeg", 1.0);
-    let donut = {
-      glazeColor: glazeColor,
-      topping: topping,
-      toppingColor: toppingColor,
-      donutName: donutName,
-      company: company,
-      companyLogo: companyUrl,
-      email: email,
-      snapshot: snapshot,
-      quantity: quantity,
-      comment: comment,
-    };
-    fetch("https://donuttello-backend-5chz.onrender.com/api/v1/donuts/create", {
-      method: "POST",
-      headers: {
-        "Allow-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(donut),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        localStorage.setItem("donutId", data.data.donut._id);
-      });
+    setTimeout(() => {
+      renderer.render(scene, camera);
+      snapshot = renderer.domElement.toDataURL("image/jpeg", 1.0);
+      let donut = {
+        glazeColor: glazeColor,
+        topping: topping,
+        toppingColor: toppingColor,
+        donutName: donutName,
+        company: company,
+        companyUrl: companyUrl,
+        email: email,
+        snapshot: snapshot,
+        quantity: quantity,
+        comment: comment,
+      };
+      fetch(
+        "https://donuttello-backend-5chz.onrender.com/api/v1/donuts/create",
+        {
+          method: "POST",
+          headers: {
+            "Allow-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(donut),
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          localStorage.setItem("donutId", data.data.donut._id);
+        });
+    }, 1000);
   }
 
   camera.position.z = 0.5;
@@ -422,7 +427,7 @@ export default {
           .then((data) => {
             console.log(data);
             // redirect to Confirm.vue page
-            // this.$router.push("/confirm");
+            this.$router.push("/confirm");
           });
       }, 1000);
     },

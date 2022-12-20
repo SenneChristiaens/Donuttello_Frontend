@@ -37,7 +37,7 @@ onMounted(() => {
       <p>Glazuur: {{ donut.glazeColor }}</p>
       <br />
       <h2>Bedrijf</h2>
-      <p>Bedrijfslogo: {{ donut.companyLogo }}</p>
+      <p>Logo Bedrijf:</p><img class="companylogo" :src="donut.companyUrl" alt="companylogo">
       <p>Naam Donut: {{ donut.donutName }}</p>
       <p>Naam Bedrijf: {{ donut.company }}</p>
       <p>Email Bedrijf: {{ donut.email }}</p>
@@ -69,6 +69,10 @@ onMounted(() => {
   background-color: #f5f5f5;
   gap: 1rem;
   width: 50%;
+}
+
+.companylogo {
+  max-width: 100px;
 }
 
 @media screen and (max-width: 768px) {
