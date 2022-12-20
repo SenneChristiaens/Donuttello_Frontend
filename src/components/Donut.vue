@@ -2,8 +2,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-
-import { ref, onMounted } from "vue";
+import { onMounted } from "vue";
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -19,6 +18,23 @@ onMounted(() => {
     postDonut();
   });
 
+  let companyUrl;
+
+  const createUrl = () => {
+    let companyLogo = document.querySelector("#company__logo").files[0];
+    let formData = new FormData();
+    formData.append("file", companyLogo);
+    formData.append("upload_preset", "q3oewktc");
+    fetch("https://api.cloudinary.com/v1_1/dziauhfdm/image/upload", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        companyUrl = data.secure_url;
+      });
+  };
+  
   renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
   document
     .querySelector(".configurator__donut")
@@ -37,11 +53,9 @@ onMounted(() => {
   const controls = new OrbitControls(camera, renderer.domElement);
   //auto rotate
   controls.autoRotate = true;
-  controls.autoRotateSpeed = 5;
+  controls.autoRotateSpeed = 2;
   controls.enableZoom = false;
   controls.enablePan = false;
-  controls.enableRotate = false;
-
 
   // ambient light
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -191,13 +205,14 @@ onMounted(() => {
   let toppingColor = null;
   let donutName = document.querySelector("#donutName").value;
   let company = document.querySelector("#company").value;
-  let companyLogo = document.querySelector("#company__logo").value;
   let email = document.querySelector("#email").value;
   let snapshot = null;
   let quantity = document.querySelector("#quantity").value;
   let comment = document.querySelector("#comment").value;
 
   function postDonut() {
+    createUrl();
+
     renderer.render(scene, camera);
     snapshot = renderer.domElement.toDataURL("image/jpeg", 1.0);
     let donut = {
@@ -206,7 +221,7 @@ onMounted(() => {
       toppingColor: toppingColor,
       donutName: donutName,
       company: company,
-      companyLogo: companyLogo,
+      companyLogo: companyUrl,
       email: email,
       snapshot: snapshot,
       quantity: quantity,
@@ -227,27 +242,23 @@ onMounted(() => {
       });
   }
 
-camera.position.z = 0.5;
-camera.position.y = 0.5;
-
-if (window.innerWidth < 600) {
-  camera.position.z = 0.75;
-} else {
   camera.position.z = 0.5;
-}
+  camera.position.y = 0.5;
 
+  if (window.innerWidth < 600) {
+    camera.position.z = 0.75;
+  } else {
+    camera.position.z = 0.5;
+  }
 
+  function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+  }
 
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  renderer.render(scene, camera);
-}
-
-animate();
+  animate();
 });
-
-
 </script>
 
 <template>
@@ -298,7 +309,10 @@ animate();
         accept="image/png, image/jpeg, image/jpg"
       />
     </div>
-    <form class="configurator__info" @submit.prevent="postDonut, updateDetails()">
+    <form
+      class="configurator__info"
+      @submit.prevent="postDonut, updateDetails()"
+    >
       <div class="configurator__formulier">
         <h1 class="details__h1">Details</h1>
         <div class="configurator__form">
@@ -408,7 +422,7 @@ export default {
           .then((data) => {
             console.log(data);
             // redirect to Confirm.vue page
-            this.$router.push("/confirm");
+            // this.$router.push("/confirm");
           });
       }, 1000);
     },
