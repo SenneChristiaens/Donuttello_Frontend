@@ -43,6 +43,9 @@ onMounted(() => {
       <p>Email Bedrijf: {{ donut.email }}</p>
       <p>Aantal Donuts: {{ donut.quantity }}</p>
       <p>Opmerkingen: {{ donut.comment }}</p>
+      <br />
+      <h2>Preview</h2>
+      <img :src="donut.snapshot" alt="donut"/>
     </div>
   </div>
   <Footerello />
@@ -56,7 +59,6 @@ onMounted(() => {
   align-items: center;
   flex-direction: column;
   background-color: #f5f5f5;
-  height: 75vh;
 }
 .configurator__formulier {
   display: flex;
