@@ -371,27 +371,32 @@ export default {
   },
   methods: {
     updateDetails() {
-      const id = localStorage.getItem("donutId");
-      console.log(id);
-      const donut = {
-        donutName: this.donutName,
-        company: this.company,
-        email: this.email,
-        quantity: this.quantity,
-        comment: this.comment,
-      };
-      fetch(`https://donuttello-backend-5chz.onrender.com/api/v1/donuts/${id}`, {
-        method: "PUT",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(donut),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        });
+      setTimeout(() => {
+        const id = localStorage.getItem("donutId");
+        console.log(id);
+        const donut = {
+          donutName: this.donutName,
+          company: this.company,
+          email: this.email,
+          quantity: this.quantity,
+          comment: this.comment,
+        };
+        fetch(
+          `https://donuttello-backend-5chz.onrender.com/api/v1/donuts/${id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(donut),
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
+      }, 1000);
     },
   },
 };
