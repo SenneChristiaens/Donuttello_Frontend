@@ -105,7 +105,6 @@ function deleteDonut(donutId) {
     return;
   }
   let apiUrl = `https://donuttello-backend-5chz.onrender.com/api/v1/donuts/${donutId}`;
-  console.log(donutId);
   fetch(apiUrl, {
     method: "DELETE",
     headers: {

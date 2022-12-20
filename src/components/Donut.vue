@@ -373,7 +373,6 @@ export default {
     updateDetails() {
       setTimeout(() => {
         const id = localStorage.getItem("donutId");
-        console.log(id);
         const donut = {
           donutName: this.donutName,
           company: this.company,
