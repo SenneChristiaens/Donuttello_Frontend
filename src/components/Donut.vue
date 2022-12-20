@@ -34,7 +34,14 @@ onMounted(() => {
   renderer.setClearColor(0xffffff, 1);
 
   // orbit controls
-  // const controls = new OrbitControls(camera, renderer.domElement);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  //auto rotate
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 5;
+  controls.enableZoom = false;
+  controls.enablePan = false;
+  controls.enableRotate = false;
+
 
   // ambient light
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -219,9 +226,9 @@ onMounted(() => {
         localStorage.setItem("donutId", data.data.donut._id);
       });
   }
-});
 
 camera.position.z = 0.5;
+camera.position.y = 0.5;
 
 if (window.innerWidth < 600) {
   camera.position.z = 0.75;
@@ -229,12 +236,18 @@ if (window.innerWidth < 600) {
   camera.position.z = 0.5;
 }
 
+
+
 function animate() {
   requestAnimationFrame(animate);
-
+  controls.update();
   renderer.render(scene, camera);
 }
+
 animate();
+});
+
+
 </script>
 
 <template>
