@@ -395,6 +395,8 @@ export default {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
+            // redirect to Confirm.vue page
+            this.$router.push("/confirm");
           });
       }, 1000);
     },
