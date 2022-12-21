@@ -429,7 +429,7 @@ export default {
           .then((data) => {
             console.log(data);
             // redirect to Confirm.vue page
-            // this.$router.push("/confirm");
+            this.$router.push("/confirm");
           });
       }, 8000);
     },
